@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       render :index
     else
-      render 'welcome/index'
+      render template: 'welcome/index'
     end
   end
 end
