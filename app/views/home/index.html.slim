@@ -1,0 +1,7 @@
+h1
+  | Home#index
+p
+  | Find me in app/views/home/index.html.erb
+p
+  = current_user
+= link_to 'logout', destroy_user_session_path, method: :delete
