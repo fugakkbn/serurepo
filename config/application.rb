@@ -12,6 +12,7 @@ module Serurepo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.generators.template_engine = :slim
     config.generators do |g|
       g.test_framework :rspec,
                        view_specs: false,
