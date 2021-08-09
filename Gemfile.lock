@@ -86,7 +86,13 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.4.4)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.3)
     globalid (0.5.2)
       activesupport (>= 5.0)
@@ -170,6 +176,23 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-rails (5.0.1)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-support (3.10.2)
     rubocop (1.18.4)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -254,6 +277,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  factory_bot_rails
   jbuilder (~> 2.7)
   letter_opener_web (~> 1.0)
   listen (~> 3.3)
@@ -261,6 +285,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
+  rspec-rails
   rubocop-fjord
   rubocop-rails
   sass-rails (>= 6)
