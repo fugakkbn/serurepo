@@ -18,6 +18,11 @@ module Serurepo
                        helper_specs: false,
                        controller_specs: false,
                        routing_specs: false
+      g.template_engine = :slim
+      g.stylesheet_engine :sass
+      g.javascripts false
+      g.helper false
+      g.assets false
     end
 
     # Configuration for the application, engines, and railties goes here.
