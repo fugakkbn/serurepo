@@ -15,11 +15,11 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.1
+        ruby-version: 3.0
         bundler-cache: true
 
-    - name: Cache node modules
-      uses: actions/cache@v2.1.4
+#     - name: Cache node modules
+#       uses: actions/cache@v2.1.4
 #       with:
 #         path: node_modules
 #         key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
