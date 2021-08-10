@@ -18,15 +18,15 @@ jobs:
         ruby-version: 3.0
         bundler-cache: true
 
-#     - name: Cache node modules
-#       uses: actions/cache@v2.1.4
-#       with:
-#         path: node_modules
-#         key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-#         restore-keys: |
-#           ${{ runner.os }}-node-
-#     - name: yarn install
-#       run:  yarn install --check-files
+    - name: Cache node modules
+      uses: actions/cache@v2.1.4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: yarn install
+      run:  yarn install --check-files
 
     - name: Rubocop
       run: bundle exec rubocop
