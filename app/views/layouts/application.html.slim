@@ -20,5 +20,11 @@ html
               .navbar-item
                 .buttons
                   = link_to 'Logout', :destroy_user_session, method: :delete, class: 'button is-light'
+
     .container.is-max-desktop
       = yield
+
+    footer.footer
+      .content.has-text-centered
+        p
+          | ©︎2021 ふーが
