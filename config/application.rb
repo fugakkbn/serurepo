@@ -23,8 +23,8 @@ module Serurepo
       g.javascripts false
       g.helper false
       g.assets false
-      config.i18n.default_locale = :ja
     end
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
