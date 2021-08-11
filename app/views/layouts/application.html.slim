@@ -9,9 +9,16 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-      h1
-        | せるれぽ
+    nav.navbar.is-info
+      .container.is-max-desktop
+        .navbar-brand
+          h1.title.is-4: a.navbar-item(href='/')
+            | せるれぽ
         - if user_signed_in?
-          = link_to 'Logout', :destroy_user_session, method: :delete
-    = yield
+          .navbar-menu.is-active
+            .navbar-end
+              .navbar-item
+                .buttons
+                  = link_to 'Logout', :destroy_user_session, method: :delete, class: 'button is-light'
+    .container.is-max-desktop
+      = yield
