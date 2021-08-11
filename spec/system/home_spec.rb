@@ -6,7 +6,7 @@ RSpec.describe 'home', type: :system do
   describe 'ログインせずに/にアクセスした場合' do
     it 'welcome#indexを表示' do
       visit root_path
-      expect(page).to have_selector 'h2', text: '「いつか読みたい本」安い時に買いませんか？'
+      expect(page).to have_selector 'h2', text: "「いつか読みたい本」\n安い時に買いませんか？"
     end
   end
 
