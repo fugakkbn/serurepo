@@ -3,10 +3,10 @@
     #error_explanation
 
     article.message.is-danger
-      message-header
+      .message-header
         p
           | エラー
-      message-body
+      .message-body
         - resource.errors.full_messages.each do |message|
           li
             = message
