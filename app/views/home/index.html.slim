@@ -1,2 +1,10 @@
 h2
   | 書籍検索
+
+= form_with(url: books_path, method: :get) do |f|
+  .field
+    = f.label :query, class: 'label'
+    = f.text_field :query, autofocus: true, class: 'input'
+
+  .actions
+    = f.submit '検索する', name: nil, class: 'button is-success'
