@@ -50,3 +50,5 @@ section.section.is-medium
           li: span.pagination-ellipsis &hellip;
           li
             = link_to @max_page_num, books_path(query: @query, page: @max_page_num), class: 'pagination-link'
+
+  = render 'books/shared/search_form'
