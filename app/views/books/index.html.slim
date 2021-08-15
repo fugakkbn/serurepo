@@ -1,2 +1,22 @@
-h1 Books#index
-p Find me in app/views/books/index.html.slim
+section.section.is-medium
+  h2.title.is-4.has-text-centered
+    | 書籍検索
+  p.block
+    = "検索結果：#{@result_count}件"
+  p
+  - @items.each do |item_hash|
+    - item = item_hash['Item']
+    .media
+      figure.media-left
+        p
+          = image_tag item['mediumImageUrl']
+      .media-content
+        .content
+          p
+            = item['title']
+            br
+            = item['author']
+            br
+            = item['salesDate']
+            br
+            = item['itemPrice']
