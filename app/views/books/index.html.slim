@@ -2,45 +2,51 @@ section.section.is-medium
   h2.title.is-4.has-text-centered
     | 書籍検索
 
-  .block.is-flex.is-justify-content-space-between
-    p = "検索結果：#{@total_num}件"
-    p = "#{@first_num} - #{@last_num}件目"
+  - if @total_num.zero?
+    .block
+      p.has-text-centered
+        | 該当する書籍がありませんでした。
 
-  .block
-    - @items.each do |item_hash|
-      - item = item_hash['Item']
-      .media
-        figure.media-left
-          p
-            = image_tag item['mediumImageUrl']
-        .media-content
-          .content
+  - else
+    .block.is-flex.is-justify-content-space-between
+      p = "検索結果：#{@total_num}件"
+      p = "#{@first_num} - #{@last_num}件目"
+
+    .block
+      - @items.each do |item_hash|
+        - item = item_hash['Item']
+        .media
+          figure.media-left
             p
-              = item['title']
-              br
-              = item['author']
-              br
-              = item['salesDate']
-              br
-              = item['itemPrice']
+              = image_tag item['mediumImageUrl']
+          .media-content
+            .content
+              p
+                = item['title']
+                br
+                = item['author']
+                br
+                = item['salesDate']
+                br
+                = item['itemPrice']
 
-  nav.pagination.is-centered
-    - if @page_num != 1
-      = link_to 'Previous', books_path(query: @query, page: @page_num - 1), class: 'pagination-previous'
-    - if @page_num != @max_page_num
-      = link_to 'Next', books_path(query: @query, page: @page_num + 1), class: 'pagination-next'
-    ul.pagination-list
+    nav.pagination.is-centered
       - if @page_num != 1
-        li
-          = link_to '1', books_path(query: @query), class: 'pagination-link'
-        li: span.pagination-ellipsis &hellip;
-        li
-          = link_to @page_num - 1, books_path(query: @query, page: @page_num - 1), class: 'pagination-link'
-      li
-        = link_to @page_num, books_path(query: @query, page: @page_num), class: 'pagination-link is-current'
+        = link_to 'Previous', books_path(query: @query, page: @page_num - 1), class: 'pagination-previous'
       - if @page_num != @max_page_num
+        = link_to 'Next', books_path(query: @query, page: @page_num + 1), class: 'pagination-next'
+      ul.pagination-list
+        - if @page_num != 1
+          li
+            = link_to '1', books_path(query: @query), class: 'pagination-link'
+          li: span.pagination-ellipsis &hellip;
+          li
+            = link_to @page_num - 1, books_path(query: @query, page: @page_num - 1), class: 'pagination-link'
         li
-          = link_to @page_num + 1, books_path(query: @query, page: @page_num + 1), class: 'pagination-link'
-        li: span.pagination-ellipsis &hellip;
-        li
-          = link_to @max_page_num, books_path(query: @query, page: @max_page_num), class: 'pagination-link'
+          = link_to @page_num, books_path(query: @query, page: @page_num), class: 'pagination-link is-current'
+        - if @page_num != @max_page_num
+          li
+            = link_to @page_num + 1, books_path(query: @query, page: @page_num + 1), class: 'pagination-link'
+          li: span.pagination-ellipsis &hellip;
+          li
+            = link_to @max_page_num, books_path(query: @query, page: @max_page_num), class: 'pagination-link'
