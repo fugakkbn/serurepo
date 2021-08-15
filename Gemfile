@@ -33,11 +33,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.1'
 gem 'devise'
 gem 'devise-i18n'
+gem 'httpclient'
 gem 'slim-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop-fjord', require: false
