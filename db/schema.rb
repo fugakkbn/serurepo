@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_012317) do
+ActiveRecord::Schema.define(version: 2021_08_16_054104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_012317) do
 
   create_table "lists", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name"
+    t.string "name", default: "通知リスト"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_lists_on_user_id", unique: true
