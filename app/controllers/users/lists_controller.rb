@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::ListsController < ApplicationController
-  def create
-    @isbn = params[:list][:book][:isbn_13]
+  def create  # rubocop:disable Metrics/MethodLength
+    @isbn = params[:list][:book]['isbn_13']
     @price = params[:list][:book][:price]
 
     if current_user.list.blank?
@@ -10,19 +10,24 @@ class Users::ListsController < ApplicationController
       book_list.save
     end
 
-    if Book.find_by(isbn_13: @isbn).nil?
+    if Book.find_by('isbn_13' => @isbn).nil?
       @item = Book.new(book_params)
       @item.save
     else
-      @item = Book.find_by(isbn_13: @isbn)
+      @item = Book.find_by('isbn_13' => @isbn)
     end
 
-    if ListDetail.find_by(list_id: current_user.list.id, book_id: @item.id).nil?
-      list_detail = ListDetail.new(list_detail_params)
-      list_detail.save
+    unless ListDetail.find_by(list_id: current_user.list.id, book_id: @item.id).nil?
+      redirect_to request.referer, alert: 'すでに追加済みです。'
+      return
     end
 
-    redirect_to request.referer
+    list_detail = ListDetail.new(list_detail_params)
+    if list_detail.save
+      redirect_to request.referer, notice: 'リストに追加しました！'
+    else
+      redirect_to request.referer, alert: 'リストに追加できませんでした。'
+    end
   end
 
   def show; end
@@ -36,7 +41,7 @@ class Users::ListsController < ApplicationController
   end
 
   def book_params
-    params.permit(:isbn_13, :price).merge(isbn_13: @isbn, price: @price)
+    params.permit('isbn_13', :price).merge('isbn_13' => @isbn, price: @price)
   end
 
   def list_detail_params
