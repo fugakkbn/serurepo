@@ -34,7 +34,7 @@ section.section.is-medium
                 .level-item
                   = form_with(model: List.new, url: users_lists_path, method: :post) do |f|
                     = f.fields_for Book.new do |detail|
-                      = detail.hidden_field :isbn_13, value: item['isbn']
+                      = detail.hidden_field 'isbn_13', value: item['isbn']
                       = detail.hidden_field :price, value: item['itemPrice']
                     .actions
                       = f.submit 'セール通知を受け取る', class: 'button is-success'
