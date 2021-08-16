@@ -2,13 +2,12 @@
 
 class Users::ListsController < ApplicationController
   def create
-    @book = params[:list][:book]
-    @isbn = @book[:isbn_13]
-    @price = @book[:price]
+    @isbn = params[:list][:book][:isbn_13]
+    @price = params[:list][:book][:price]
 
     if current_user.list.blank?
-      @list = List.new(list_params)
-      @list.save
+      book_list = List.new(list_params)
+      book_list.save
     end
 
     if Book.find_by(isbn_13: @isbn).nil?
@@ -19,8 +18,8 @@ class Users::ListsController < ApplicationController
     end
 
     if ListDetail.find_by(list_id: current_user.list.id, book_id: @item.id).nil?
-      @list_detail = ListDetail.new(list_detail_params)
-      @list_detail.save
+      list_detail = ListDetail.new(list_detail_params)
+      list_detail.save
     end
 
     redirect_to request.referer
