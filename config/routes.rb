@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :users do
+    get 'list/create'
+    get 'list/show'
+    get 'list/update'
+  end
   root 'home#index'
   devise_for :users
   resources :books, only: %i[index]
