@@ -25,6 +25,16 @@ html
                 span.material-icons.md-36
                   | manage_accounts
 
+    - if flash.present?
+      - flash.each do |key, value|
+        - case key
+          - when 'alert'
+            .notification.is-danger.is-light
+              = tag(:div, value, class: 'has-text-centered')
+          - when 'notice'
+            .notification.is-success.is-light
+              = tag(:div, value, class: 'has-text-centered')
+
     .container.is-max-desktop
       = yield
 
