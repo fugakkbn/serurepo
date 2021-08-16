@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
 
-  has_one :list
+  has_one :list, dependent: :destroy
 end
