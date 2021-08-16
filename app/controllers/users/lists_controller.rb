@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::ListController < ApplicationController
+class Users::ListsController < ApplicationController
   def create; end
 
   def show; end
