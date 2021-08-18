@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::ListsController < ApplicationController
+  before_action :require_self_list, only: %i[show]
+
   def create # rubocop:disable Metrics/MethodLength
     item = params[:list][:book]
     @isbn = item['isbn_13']
@@ -44,6 +46,10 @@ class Users::ListsController < ApplicationController
   def update; end
 
   private
+
+  def require_self_list
+    redirect_to root_path, alert: 'URLが不正です。' if current_user.list.id != params[:id].to_i
+  end
 
   def list_params
     params.permit(:user_id, :name).merge(user_id: current_user.id)
