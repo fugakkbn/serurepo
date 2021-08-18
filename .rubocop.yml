@@ -1,7 +1,16 @@
 require:
   - rubocop-rails
   - rubocop-rspec
+
 inherit_gem:
   rubocop-fjord:
     - "config/rubocop.yml"
     - "config/rails.yml"
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/ClassLength:
+  Exclude:
+    - spec/**/*

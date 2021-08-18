@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'books#index', type: :system do # rubocop:disable Metrics/BlockLength
+RSpec.describe 'books#index', type: :system do
   describe '未ログインでアクセスした場合' do
     it '検索できない' do
       visit 'books/?query=ruby'
