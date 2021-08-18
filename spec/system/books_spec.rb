@@ -2,10 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe 'books', type: :system do
+RSpec.describe 'books#index', type: :system do # rubocop:disable Metrics/BlockLength
+  describe '未ログインでアクセスした場合' do
+    it '検索できない' do
+      visit 'books/?query=ruby'
+      expect(page).to have_content 'ログインもしくはアカウント登録してください。'
+    end
+  end
+
   describe 'ISBNで検索した場合' do
     it 'プロを目指す人のためのRuby入門が表示される' do
-      # visit root_path
       visit_with_auth root_path, :alice
       fill_in 'Query', with: '9784774193977'
       click_button '検索する'
