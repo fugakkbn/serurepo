@@ -7,4 +7,10 @@ module LoginModule
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
   end
+
+  def visit_with_auth(url, user)
+    login_user = create(user)
+    login(login_user)
+    visit url
+  end
 end
