@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 class Users::ListsController < ApplicationController
-  def create  # rubocop:disable Metrics/MethodLength
-    @isbn = params[:list][:book]['isbn_13']
-    @price = params[:list][:book][:price]
+  def create # rubocop:disable Metrics/MethodLength
+    item = params[:list][:book]
+    @isbn = item['isbn_13']
+    @price = item[:price]
+    @title = item[:title]
+    @author = item[:author]
+    @image = item[:image]
+    @url = item[:url]
+    @sales_date = item[:sales_date]
 
     if current_user.list.blank?
-      book_list = List.new(list_params)
+      book_list = List.new(list_paras)
       book_list.save
     end
 
@@ -30,7 +36,20 @@ class Users::ListsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    # list_id = params[:id]
+    # @books = []
+    # ListDetail.where(list_id: list_id).each do |detail|
+    #   p "detail: #{detail.book.isbn_13}"
+    #   url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&affiliateId=#{ENV['RAKUTEN_AF_ID']}&applicationId=#{ENV['RAKUTEN_APP_ID']}&isbn=#{detail.book.isbn_13}"
+    #   client = HTTPClient.new
+    #   request = client.get(url)
+    #   response = JSON.parse(request.body)
+    #   book = response['Items']
+    #   p book
+    #   book = response[0]
+    # end
+  end
 
   def update; end
 
@@ -41,7 +60,8 @@ class Users::ListsController < ApplicationController
   end
 
   def book_params
-    params.permit('isbn_13', :price).merge('isbn_13' => @isbn, price: @price)
+    params.permit('isbn_13', :price, :title, :author, :image, :url, :sales_date)
+          .merge('isbn_13' => @isbn, price: @price, title: @title, author: @author, image: @image, url: @url, sales_date: @sales_date)
   end
 
   def list_detail_params

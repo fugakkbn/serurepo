@@ -40,6 +40,11 @@ section.section.is-medium
                       = f.fields_for Book.new do |detail|
                         = detail.hidden_field 'isbn_13', value: item['isbn']
                         = detail.hidden_field :price, value: item['itemPrice']
+                        = detail.hidden_field :title, value: item['title']
+                        = detail.hidden_field :author, value: item['author']
+                        = detail.hidden_field :image, value: item['mediumImageUrl']
+                        = detail.hidden_field :url, value: item['affiliateUrl']
+                        = detail.hidden_field :sales_date, value: item['salesDate']
                       .actions
                         = f.submit 'セール通知を受け取る', class: 'button is-success'
 
