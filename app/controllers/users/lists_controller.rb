@@ -37,18 +37,8 @@ class Users::ListsController < ApplicationController
   end
 
   def show
-    # list_id = params[:id]
-    # @books = []
-    # ListDetail.where(list_id: list_id).each do |detail|
-    #   p "detail: #{detail.book.isbn_13}"
-    #   url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&affiliateId=#{ENV['RAKUTEN_AF_ID']}&applicationId=#{ENV['RAKUTEN_APP_ID']}&isbn=#{detail.book.isbn_13}"
-    #   client = HTTPClient.new
-    #   request = client.get(url)
-    #   response = JSON.parse(request.body)
-    #   book = response['Items']
-    #   p book
-    #   book = response[0]
-    # end
+    list_id = params[:id]
+    @books = ListDetail.where(list_id: list_id).map(&:book)
   end
 
   def update; end

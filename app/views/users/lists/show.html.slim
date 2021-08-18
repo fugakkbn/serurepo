@@ -1,0 +1,20 @@
+section.section.is-medium
+  h2.title.is-4.has-text-centered
+    | セール通知リスト
+
+  .block
+  - @books.each do |book|
+    .media
+      figure.media-left
+        p
+          = image_tag book.image
+      .media-content
+        .content
+          p
+            = link_to book.title, book.url
+            br
+            = book.author
+            br
+            = book.sales_date
+            br
+            = book.price
