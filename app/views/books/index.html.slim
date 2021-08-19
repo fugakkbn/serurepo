@@ -33,7 +33,7 @@ section.section.is-medium
               .level-right
                 .level-item
                   - if registered?(item['isbn'])
-                    .button.is-light(disabled)
+                    button.button.is-light(disabled)
                       | リスト登録済み
                   - else
                     = form_with(model: List.new, url: users_lists_path, method: :post) do |f|
