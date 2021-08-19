@@ -32,7 +32,7 @@ section.section.is-medium
             nav.level
               .level-right
                 .level-item
-                  - if registered?(item['isbn'])
+                  - if registered?(item['isbn'], current_user)
                     button.button.is-light(disabled)
                       | リスト登録済み
                   - else
