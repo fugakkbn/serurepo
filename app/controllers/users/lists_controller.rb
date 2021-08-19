@@ -14,8 +14,10 @@ class Users::ListsController < ApplicationController
     @sales_date = item[:sales_date]
 
     if current_user.list.blank?
-      book_list = List.new(list_paras)
-      book_list.save
+      @book_list = List.new(list_params)
+      @book_list.save
+    else
+      @book_list = current_user.list
     end
 
     if Book.find_by('isbn_13' => @isbn).nil?
@@ -25,7 +27,7 @@ class Users::ListsController < ApplicationController
       @item = Book.find_by('isbn_13' => @isbn)
     end
 
-    unless ListDetail.find_by(list_id: current_user.list.id, book_id: @item.id).nil?
+    unless ListDetail.find_by(list_id: @book_list.id, book_id: @item.id).nil?
       redirect_to request.referer, alert: 'すでに追加済みです。'
       return
     end
@@ -61,6 +63,6 @@ class Users::ListsController < ApplicationController
   end
 
   def list_detail_params
-    params.permit(:list_id, :book_id).merge(list_id: current_user.list.id, book_id: @item.id)
+    params.permit(:list_id, :book_id).merge(list_id: @book_list.id, book_id: @item.id)
   end
 end
