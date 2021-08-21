@@ -6,20 +6,24 @@ html
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
     nav.navbar.is-info
       .container.is-max-desktop
         .navbar-brand
-          h1.title.is-4: a.navbar-item.has-text-white(href='/')
-            | せるれぽ
-        - if user_signed_in?
-          .navbar-menu.is-active
-            .navbar-end
-              .navbar-item
-                .buttons
-                  = link_to 'Logout', :destroy_user_session, method: :delete, class: 'button is-light'
+          h1.title.is-4.navbar-item
+            = link_to 'せるれぽ', '/', class: 'has-text-white'
+          - if user_signed_in?
+            .navbar-item
+              = link_to '#', class: 'has-text-white mr-3'
+                span.material-icons.md-36
+                  | receipt_long
+              = link_to edit_user_registration_path, class: 'has-text-white'
+                span.material-icons.md-36
+                  | manage_accounts
 
     .container.is-max-desktop
       = yield
