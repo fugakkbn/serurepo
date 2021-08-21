@@ -4,33 +4,28 @@ require 'rails_helper'
 
 RSpec.describe 'users/lists', type: :system do
   describe '#create' do
-    describe 'ログイン状態で通知を受け取るボタンを押した場合' do
-      before do
+    context 'ログイン状態で通知を受け取るボタンを押した場合' do
+      # exampleを2つにわけるとAPIのアクセス制限でエラーになってしまうので、例外的にrubocopを解除
+      it '登録に成功してボタンが非活性になっている' do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
         visit_with_auth root_path, :alice
         fill_in 'Query', with: '9784774193977'
         click_button '検索する'
         click_button 'セール通知を受け取る'
-      end
-
-      it '登録が成功する' do
         expect(page).to have_content 'リストに追加しました！'
-      end
-
-      it 'ボタンが非活性になっている' do
         expect(page).to have_button 'リスト登録済み', disabled: true
       end
     end
   end
 
   describe '#show' do
-    describe '未ログイン状態でアクセスした場合' do
-      it 'rootにリダイレクトしてフラッシュメッセージが表示される' do
+    context '未ログイン状態でアクセスした場合' do
+      it 'フラッシュメッセージが表示される' do
         visit 'users/lists/3'
         expect(page).to have_content 'ログインもしくはアカウント登録してください。'
       end
     end
 
-    describe '自分のリストにアクセスした場合' do
+    context '自分のリストにアクセスした場合' do
       it 'アクセスできる' do
         list = create(:list)
         login(list.user)
@@ -46,7 +41,7 @@ RSpec.describe 'users/lists', type: :system do
       end
     end
 
-    describe '自分のリスト以外にアクセスした場合' do
+    context '自分のリスト以外にアクセスした場合' do
       it 'rootにリダイレクトしてフラッシュメッセージが表示される' do
         list = create(:list)
         login(list.user)

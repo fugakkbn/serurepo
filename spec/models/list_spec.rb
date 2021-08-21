@@ -21,8 +21,8 @@ RSpec.describe List, type: :model do
     end
   end
 
-  describe '異常系' do
-    context 'user_idが空の場合' do
+  describe 'user_id' do
+    context '空の場合' do
       it '登録失敗' do
         list = build(:list, user_id: '')
         list.valid?
@@ -30,7 +30,7 @@ RSpec.describe List, type: :model do
       end
     end
 
-    context 'user_idが文字列の場合' do
+    context '文字列の場合' do
       it '登録失敗' do
         list = build(:list, user_id: 'テスト')
         list.valid?
