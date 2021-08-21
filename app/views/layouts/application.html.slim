@@ -18,7 +18,7 @@ html
             = link_to 'せるれぽ', '/', class: 'has-text-white'
           - if user_signed_in?
             .navbar-item
-              = link_to '#', class: 'has-text-white mr-3'
+              = link_to users_list_path(current_user.list.id), class: 'has-text-white mr-3'
                 span.material-icons.md-36
                   | receipt_long
               = link_to edit_user_registration_path, class: 'has-text-white'
