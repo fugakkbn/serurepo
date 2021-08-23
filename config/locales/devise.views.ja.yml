@@ -48,30 +48,30 @@ ja:
       confirmation_instructions:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
-        instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        instruction: 以下のリンクをクリックし、登録を完了させてください。
+        subject: 【せるれぽ】登録確認メール
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
         message_unconfirmed: メールアドレスが（%{email}）変更されたため、メールを送信しています。
-        subject: メール変更完了
+        subject: 【せるれぽ】メール変更完了
       password_change:
         greeting: "%{recipient}様"
         message: パスワードが再設定されました。
-        subject: パスワードの変更について
+        subject: 【せるれぽ】パスワードの変更について
       reset_password_instructions:
         action: パスワード変更
         greeting: "%{recipient}様"
         instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
         instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
         instruction_3: パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません。
-        subject: パスワードの再設定について
+        subject: 【せるれぽ】パスワードの再設定について
       unlock_instructions:
         action: アカウントのロック解除
         greeting: "%{recipient}様"
         instruction: アカウントのロックを解除するには下のリンクをクリックしてください。
         message: ログイン失敗が繰り返されたため、アカウントはロックされています。
-        subject: アカウントのロック解除について
+        subject: 【せるれぽ】アカウントのロック解除について
     omniauth_callbacks:
       failure: "%{kind} アカウントによる認証に失敗しました。理由：（%{reason}）"
       success: "%{kind} アカウントによる認証に成功しました。"
