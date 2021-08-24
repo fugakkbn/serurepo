@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_071330) do
+ActiveRecord::Schema.define(version: 2021_08_18_034413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string "isbn_13"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "title"
+    t.text "author"
+    t.text "image"
+    t.text "url"
+    t.text "sales_date"
+  end
+
+  create_table "list_details", force: :cascade do |t|
+    t.bigint "list_id"
+    t.bigint "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_list_details_on_book_id"
+    t.index ["list_id"], name: "index_list_details_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", default: "通知リスト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lists_on_user_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,4 +66,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_071330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "list_details", "books"
+  add_foreign_key "list_details", "lists"
+  add_foreign_key "lists", "users"
 end
