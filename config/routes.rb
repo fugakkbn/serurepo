@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
   resources :books, only: %i[index]
+  resources :list_details, only: %i[destroy]
   namespace :users do
     resources :lists, only: %i[create show update]
   end

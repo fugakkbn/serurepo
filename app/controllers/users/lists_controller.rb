@@ -41,8 +41,8 @@ class Users::ListsController < ApplicationController
   end
 
   def show
-    list_id = params[:id]
-    @books = ListDetail.where(list_id: list_id).map(&:book)
+    @list_id = params[:id]
+    @books = ListDetail.where(list_id: @list_id).map(&:book)
   end
 
   def update; end

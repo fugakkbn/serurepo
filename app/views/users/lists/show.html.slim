@@ -6,8 +6,15 @@ section.section.is-medium
   - @books.each do |book|
     .media
       figure.media-left
-        p
+        p.block
           = image_tag book.image
+        .level
+          .level-right
+            .level-item
+              = link_to '削除する', list_detail_path(ListDetail.find_by(list_id: @list_id, book_id: book.id).id),
+                      method: :delete,
+                      class: 'button is-danger',
+                      data: { confirm: '削除してよろしいですか？' }
       .media-content
         .content
           p
