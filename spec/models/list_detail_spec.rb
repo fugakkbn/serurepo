@@ -6,7 +6,6 @@ RSpec.describe ListDetail, type: :model do
   context '全ての想定の値の場合' do
     it '登録成功' do
       detail = create(:list_detail_one)
-      detail.valid?
       expect(detail).to be_valid
     end
   end
@@ -16,7 +15,7 @@ RSpec.describe ListDetail, type: :model do
       it '登録失敗' do
         detail = build(:list_detail_one, list_id: '')
         detail.valid?
-        expect(detail).to be_invalid
+        expect(detail.errors[:list_id]).to include('を入力してください')
       end
     end
 
@@ -24,7 +23,7 @@ RSpec.describe ListDetail, type: :model do
       it '登録失敗' do
         detail = build(:list_detail_one, list_id: 'テスト')
         detail.valid?
-        expect(detail).to be_invalid
+        expect(detail.errors[:list_id]).to include('は数値で入力してください')
       end
     end
   end
@@ -34,7 +33,7 @@ RSpec.describe ListDetail, type: :model do
       it '登録失敗' do
         detail = build(:list_detail_one, book_id: '')
         detail.valid?
-        expect(detail).to be_invalid
+        expect(detail.errors[:book_id]).to include('を入力してください')
       end
     end
 
@@ -42,7 +41,7 @@ RSpec.describe ListDetail, type: :model do
       it '登録失敗' do
         detail = build(:list_detail_one, book_id: 'テスト')
         detail.valid?
-        expect(detail).to be_invalid
+        expect(detail.errors[:book_id]).to include('は数値で入力してください')
       end
     end
   end

@@ -7,7 +7,6 @@ RSpec.describe List, type: :model do
     context '全て想定の値の場合' do
       it '登録成功' do
         list = create(:list)
-        list.valid?
         expect(list).to be_valid
       end
     end
@@ -15,7 +14,6 @@ RSpec.describe List, type: :model do
     context 'nameが空の場合' do
       it '登録成功' do
         list = create(:list, name: '')
-        list.valid?
         expect(list).to be_valid
       end
     end
@@ -26,7 +24,7 @@ RSpec.describe List, type: :model do
       it '登録失敗' do
         list = build(:list, user_id: '')
         list.valid?
-        expect(list).to be_invalid
+        expect(list.errors[:user_id]).to include('を入力してください')
       end
     end
 
@@ -34,7 +32,7 @@ RSpec.describe List, type: :model do
       it '登録失敗' do
         list = build(:list, user_id: 'テスト')
         list.valid?
-        expect(list).to be_invalid
+        expect(list.errors[:user_id]).to include('は数値で入力してください')
       end
     end
   end

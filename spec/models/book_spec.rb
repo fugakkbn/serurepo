@@ -6,7 +6,6 @@ RSpec.describe Book, type: :model do
   describe '正常系' do
     it '登録成功' do
       book = build(:cherry)
-      book.valid?
       expect(book).to be_valid
     end
   end
@@ -16,7 +15,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, 'isbn_13' => '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors['isbn_13']).to include('を入力してください')
       end
     end
 
@@ -24,7 +23,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, 'isbn_13' => '978123456789')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors['isbn_13']).to include('は13文字で入力してください')
       end
     end
 
@@ -32,7 +31,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, 'isbn_13' => '97812345678901')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors['isbn_13']).to include('は13文字で入力してください')
       end
     end
   end
@@ -42,7 +41,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, price: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:price]).to include('を入力してください')
       end
     end
 
@@ -50,7 +49,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, price: '百円')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:price]).to include('は数値で入力してください')
       end
     end
   end
@@ -60,7 +59,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, title: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:title]).to include('を入力してください')
       end
     end
   end
@@ -70,7 +69,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, author: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:author]).to include('を入力してください')
       end
     end
   end
@@ -80,7 +79,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, image: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:image]).to include('を入力してください')
       end
     end
   end
@@ -90,7 +89,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, url: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:url]).to include('を入力してください')
       end
     end
   end
@@ -100,7 +99,7 @@ RSpec.describe Book, type: :model do
       it '登録失敗' do
         book = build(:cherry, sales_date: '')
         book.valid?
-        expect(book).to be_invalid
+        expect(book.errors[:sales_date]).to include('を入力してください')
       end
     end
   end
