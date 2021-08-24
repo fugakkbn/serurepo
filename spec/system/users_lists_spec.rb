@@ -39,6 +39,13 @@ RSpec.describe 'users/lists', type: :system do
         visit users_list_path list_detail.list.id
         expect(page).to have_content 'プロを目指す人のためのRuby入門'
       end
+
+      it '削除ボタンが表示される' do
+        list_detail = create(:list_detail_one)
+        login(list_detail.list.user)
+        visit users_list_path list_detail.list.id
+        expect(page).to have_selector 'a.button.is-danger', text: '削除する'
+      end
     end
 
     context '自分のリスト以外にアクセスした場合' do
