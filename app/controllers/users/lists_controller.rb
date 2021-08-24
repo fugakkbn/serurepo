@@ -48,7 +48,7 @@ class Users::ListsController < ApplicationController
   private
 
   def require_self_list
-    redirect_to root_path, alert: 'URLが不正です。' if current_user.list.id != params[:id].to_i
+    redirect_to root_path, alert: 'URLが不正です。' if current_user.list&.id != params[:id].to_i
   end
 
   def list_params
