@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :books, only: %i[index]
   resources :list_details, only: %i[destroy]
   namespace :users do
-    resources :lists, only: %i[create show update]
+    resources :lists, only: %i[create show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

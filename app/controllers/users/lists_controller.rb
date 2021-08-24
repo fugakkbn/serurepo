@@ -45,8 +45,6 @@ class Users::ListsController < ApplicationController
     @books = ListDetail.where(list_id: @list_id).map(&:book)
   end
 
-  def update; end
-
   private
 
   def require_self_list
