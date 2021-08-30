@@ -31,10 +31,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'bulma-rails', '~> 0.9.1'
+gem 'capybara', '>= 3.26'
 gem 'devise'
 gem 'devise-i18n'
 gem 'httpclient'
+gem 'selenium-webdriver'
 gem 'slim-rails'
+gem 'webdrivers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,10 +66,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
