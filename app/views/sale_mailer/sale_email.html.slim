@@ -1,0 +1,26 @@
+h1
+  = "#{@book.title}のセール情報です。"
+
+- if @sale_data[:amazon].present?
+  p
+    | Amazon
+  p
+    = "価格： #{@sale_data[:amazon][:price]}"
+  p
+    = link_to '商品ページへ', @sale_data[:amazon][:url]
+
+- if @sale_data[:dmm].present?
+  p
+    | DMMブックス
+  p
+    = "価格： #{@sale_data[:dmm][:price]}"
+  p
+    = link_to '商品ページへ', @sale_data[:dmm][:url]
+
+- if @sale_data[:rakuten].present?
+  p
+    | 楽天BOOKS
+  p
+    = "価格： #{@sale_data[:rakuten][:price]}"
+  p
+    = link_to '商品ページへ', @sale_data[:rakuten][:url]
