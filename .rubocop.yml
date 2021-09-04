@@ -18,3 +18,7 @@ Metrics/ClassLength:
 ContextWording:
   Exclude:
     - spec/**/*
+
+NestedGroups:
+  Exclude:
+    - spec/**/*
