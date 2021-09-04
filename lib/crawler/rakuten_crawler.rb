@@ -21,6 +21,8 @@ class RakutenCrawler < Crawler
 
       first('.rbcomp__item-list__item__details__lead').first('a').click
 
+      sleep 5
+
       price = find('.productPrice span.price').text.delete(',円').to_i
       data << price
 
