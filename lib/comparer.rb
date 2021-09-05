@@ -3,10 +3,13 @@
 require 'crawler/amazon_crawler'
 require 'crawler/dmm_crawler'
 require 'crawler/rakuten_crawler'
+require 'logger'
 
 module Comparer
   class Books
     def self.run
+      logger = Logger.new('log/crawler.log')
+
       data = []
       Book.all.each do |book|
         amazon = AmazonCrawler.new
@@ -17,7 +20,7 @@ module Comparer
           dmm.run(book.title)
           rakuten.run(book.isbn_13)
         rescue Capybara::ElementNotFound
-          logger.info 'amazon: Capybara::ElementNotFound'
+          logger << "Capybara::ElementNotFound\n"
         end
 
         data.push({ book_id: book.id,
@@ -25,6 +28,7 @@ module Comparer
                     dmm: dmm_comparer(dmm, book),
                     rakuten: rakuten_comparer(rakuten, book) })
       end
+      logger << data
       data
     end
 
@@ -43,7 +47,8 @@ module Comparer
 
       return if price >= book.price
 
-      { price: price, url: book.url }
+      { price: price,
+        url: "https://www.amazon.co.jp/dp/#{amazon_data.asin}/ref=nosim?tag=#{ENV['AMAZON_TAG']}" }
     end
 
     def self.dmm_comparer(dmm_data, book)
