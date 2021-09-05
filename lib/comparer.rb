@@ -47,7 +47,8 @@ module Comparer
 
       return if price >= book.price
 
-      { price: price, url: book.url }
+      { price: price,
+        url: "https://www.amazon.co.jp/dp/#{amazon_data.asin}/ref=nosim?tag=#{ENV['AMAZON_TAG']}" }
     end
 
     def self.dmm_comparer(dmm_data, book)
