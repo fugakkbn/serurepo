@@ -1,8 +1,10 @@
 = form_with(url: books_path, method: :get) do |f|
-  .field
-    = f.label :query, '検索ワード or ISBN', class: 'label'
-    .control
-      = f.text_field :query, class: 'input'
+  .columns
+    .column.is-narrow
+      .field style="width: 320px;"
+        = f.label :query, '検索ワード or ISBN', class: 'label'
+        .control
+          = f.text_field :query, class: 'input'
 
   .actions
     .field.is-grouped.is-grouped-right
