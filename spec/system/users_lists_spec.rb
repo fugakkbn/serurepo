@@ -8,7 +8,7 @@ RSpec.describe 'users/lists', type: :system do
       # exampleを2つにわけるとAPIのアクセス制限でエラーになってしまうので、例外的にrubocopを解除
       it '登録に成功してボタンが非活性になっている' do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
         visit_with_auth root_path, :alice
-        fill_in 'Query', with: '9784774193977'
+        fill_in '検索ワード or ISBN', with: '9784774193977'
         click_button '検索する'
         click_button 'セール通知を受け取る'
         expect(page).to have_content 'リストに追加しました！'

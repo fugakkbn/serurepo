@@ -1,16 +1,46 @@
-= "#{@book.title}のセール情報です。"
+| こんにちは！！
+br
+| 登録されている書籍のセール情報をお届けします。
+
+| 【書籍タイトル】
+br
+= @book.title
+br
+| 【著者】
+br
+= @book.author
+br
+| 【定価】
+br
+= @book.price
+
+br
+br
 
 - if @sale_data[:amazon].present?
-  | Amazon
-  = "価格： #{@sale_data[:amazon][:price]}"
-  = link_to '商品ページへ', @sale_data[:amazon][:url]
-
+  | 【Amazon】
+  br
+  = @sale_data[:amazon][:price]
+  br
+  = @sale_data[:amazon][:url]
+  br
 - if @sale_data[:dmm].present?
-  | DMMブックス
-  = "価格： #{@sale_data[:dmm][:price]}"
-  = link_to '商品ページへ', @sale_data[:dmm][:url]
-
+  | 【DMMブックス】
+  br
+  = @sale_data[:dmm][:price]
+  br
+  = @sale_data[:dmm][:url]
+  br
 - if @sale_data[:rakuten].present?
-  | 楽天BOOKS
-  = "価格： #{@sale_data[:rakuten][:price]}"
-  = link_to '商品ページへ', @sale_data[:rakuten][:url]
+  | 【楽天ブックス】
+  br
+  = @sale_data[:rakuten][:price]
+  br
+  = @sale_data[:rakuten][:url]
+  br
+
+br
+
+| 書籍を購入したら、
+= link_to 'こちら', users_list_url(@user.list)
+| から削除すると通知が届かなくなります。

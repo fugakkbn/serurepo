@@ -1,26 +1,35 @@
-h1
-  = "#{@book.title}のセール情報です。"
+.section.is-medium
+  p.block
+    | こんにちは！！
+    br
+    | 登録されている書籍のセール情報をお届けします。
 
-- if @sale_data[:amazon].present?
-  p
-    | Amazon
-  p
-    = "価格： #{@sale_data[:amazon][:price]}"
-  p
-    = link_to '商品ページへ', @sale_data[:amazon][:url]
+  article.media.block
+    figure.media-left.image.is-240x240
+      = image_tag @book.image
 
-- if @sale_data[:dmm].present?
-  p
-    | DMMブックス
-  p
-    = "価格： #{@sale_data[:dmm][:price]}"
-  p
-    = link_to '商品ページへ', @sale_data[:dmm][:url]
+    .media-content
+      .field
+        p.title.is-6
+          = @book.title
+        p
+          = "著者　#{@book.author}"
+          br
+          = "定価　#{@book.price}"
 
-- if @sale_data[:rakuten].present?
-  p
-    | 楽天BOOKS
-  p
-    = "価格： #{@sale_data[:rakuten][:price]}"
-  p
-    = link_to '商品ページへ', @sale_data[:rakuten][:url]
+  .columns
+    .column.is-narrow
+      - if @sale_data[:amazon].present?
+        p.block
+          = link_to "Amazon #{@sale_data[:amazon][:price]}", @sale_data[:amazon][:url], class: 'button is-warning', style: 'width: 300px;'
+      - if @sale_data[:dmm].present?
+        p.block
+          = link_to "DMMブックス #{@sale_data[:dmm][:price]}", @sale_data[:dmm][:url], class: 'button is-link', style: 'width: 300px;'
+      - if @sale_data[:rakuten].present?
+        p.block
+          = link_to "楽天ブックス #{@sale_data[:rakuten][:price]}", @sale_data[:rakuten][:url], class: 'button is-primary', style: 'width: 300px;'
+
+  p.block
+    | 書籍を購入したら、
+    = link_to 'こちら', users_list_url(@user.list.id)
+    | から削除すると通知が届かなくなります。
