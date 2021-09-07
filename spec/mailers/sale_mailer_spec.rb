@@ -4,7 +4,8 @@ require 'rails_helper'
 
 RSpec.describe SaleMailer, type: :mailer do
   describe 'sale_email' do
-    let(:user) { create(:alice) }
+    let(:list) { create(:list) }
+    let(:user) { list.user }
     let(:book) { create(:cherry) }
     let(:sale_data) do
       { book_id: book.id,
