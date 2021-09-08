@@ -23,12 +23,12 @@ section.section.is-medium
             .content
               p
                 = link_to item['title'], item['affiliateUrl'], id: 'book-title'
+              p.is-size-7
+                = "著者　#{item['author']}"
                 br
-                = item['author']
+                = "発売　#{item['salesDate']}"
                 br
-                = item['salesDate']
-                br
-                = item['itemPrice']
+                = "定価　#{format_price(item['itemPrice'])}"
             nav.level
               .level-right
                 .level-item
