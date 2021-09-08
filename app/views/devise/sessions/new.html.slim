@@ -10,6 +10,8 @@ section.section.is-medium
     .field
       = f.label :password, class: 'label'
       = f.password_field :password, autocomplete: 'current-password', class: 'input'
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        p = link_to t('.forgot_your_password'), new_password_path(resource_name)
 
     - if devise_mapping.rememberable?
       .field
