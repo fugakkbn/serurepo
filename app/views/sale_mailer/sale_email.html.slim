@@ -12,7 +12,7 @@
       .field
         p.title.is-6
           = @book.title
-        p
+        p.is-size-7
           = "著者　#{@book.author}"
           br
           = "定価　#{format_price(@book.price)}"
