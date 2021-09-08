@@ -12,7 +12,7 @@ br
 br
 | 【定価】
 br
-= @book.price
+= format_price(@book.price)
 
 br
 br
@@ -20,21 +20,21 @@ br
 - if @sale_data[:amazon].present?
   | 【Amazon】
   br
-  = @sale_data[:amazon][:price]
+  = format_price(@sale_data[:amazon][:price])
   br
   = @sale_data[:amazon][:url]
   br
 - if @sale_data[:dmm].present?
   | 【DMMブックス】
   br
-  = @sale_data[:dmm][:price]
+  = format_price(@sale_data[:dmm][:price])
   br
   = @sale_data[:dmm][:url]
   br
 - if @sale_data[:rakuten].present?
   | 【楽天ブックス】
   br
-  = @sale_data[:rakuten][:price]
+  = format_price(@sale_data[:rakuten][:price])
   br
   = @sale_data[:rakuten][:url]
   br
