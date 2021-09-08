@@ -38,5 +38,13 @@ RSpec.describe 'books', type: :system do
         expect(page).to have_content '該当する書籍がありませんでした。'
       end
     end
+
+    context '空で検索した場合' do
+      it '検索ワードを入力してください。と表示される' do
+        visit_with_auth root_path, :alice
+        click_button '検索する'
+        expect(page).to have_content '検索ワードを入力してください。'
+      end
+    end
   end
 end
