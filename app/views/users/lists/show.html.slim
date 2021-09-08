@@ -19,9 +19,9 @@ section.section.is-medium
         .content
           p
             = link_to book.title, book.url
+          p.is-size-7
+            = "著者　#{book.author}"
             br
-            = book.author
+            = "発売　#{book.sales_date}"
             br
-            = book.sales_date
-            br
-            = book.price
+            = "定価　#{format_price(book.price)}"
