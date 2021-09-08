@@ -41,5 +41,12 @@ html
 
     footer.footer
       .content.has-text-centered
-        p
+        p.block
+          = link_to (image_tag '/icons/github.png', class: 'icon is-medium mx-2'),
+                  'https://github.com/FUGA0618/serurepo',
+                  class: 'footer-icon'
+          = link_to (image_tag '/icons/twitter.png', class: 'icon is-medium mx-2'),
+                  'https://twitter.com/fuga__ch',
+                  class: 'footer-icon'
+        p.block
           | ©︎2021 ふーが
