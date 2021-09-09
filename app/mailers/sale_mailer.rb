@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SaleMailer < ApplicationMailer
+  helper :books
+
   default from: 'aax.chiri@gmail.com'
 
   def sale_email

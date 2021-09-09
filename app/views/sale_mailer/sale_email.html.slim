@@ -12,22 +12,28 @@
       .field
         p.title.is-6
           = @book.title
-        p
+        p.is-size-7
           = "著者　#{@book.author}"
           br
-          = "定価　#{@book.price}"
+          = "定価　#{format_price(@book.price)}"
 
   .columns
     .column.is-narrow
       - if @sale_data[:amazon].present?
         p.block
-          = link_to "Amazon #{@sale_data[:amazon][:price]}", @sale_data[:amazon][:url], class: 'button is-warning', style: 'width: 300px;'
+          = link_to "Amazon #{format_price(@sale_data[:amazon][:price])}",
+                  @sale_data[:amazon][:url],
+                  class: 'button is-warning', style: 'width: 300px;'
       - if @sale_data[:dmm].present?
         p.block
-          = link_to "DMMブックス #{@sale_data[:dmm][:price]}", @sale_data[:dmm][:url], class: 'button is-link', style: 'width: 300px;'
+          = link_to "DMMブックス #{format_price(@sale_data[:dmm][:price])}",
+                  @sale_data[:dmm][:url],
+                  class: 'button is-link', style: 'width: 300px;'
       - if @sale_data[:rakuten].present?
         p.block
-          = link_to "楽天ブックス #{@sale_data[:rakuten][:price]}", @sale_data[:rakuten][:url], class: 'button is-primary', style: 'width: 300px;'
+          = link_to "楽天ブックス #{format_price(@sale_data[:rakuten][:price])}",
+                  @sale_data[:rakuten][:url],
+                  class: 'button is-primary', style: 'width: 300px;'
 
   p.block
     | 書籍を購入したら、
