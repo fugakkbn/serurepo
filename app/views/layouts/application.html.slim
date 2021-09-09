@@ -14,8 +14,10 @@ html
     nav.navbar.is-info
       .container.is-max-desktop
         .navbar-brand
-          h1.title.is-4.navbar-item
-            = link_to 'せるれぽ', '/', class: 'has-text-white'
+          h1.navbar-item
+            a href='/'
+              figure.image
+                = image_tag '/logo.png'
           - if user_signed_in?
             .navbar-item
               - if current_user.list.present?
