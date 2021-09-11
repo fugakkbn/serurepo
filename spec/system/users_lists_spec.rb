@@ -5,8 +5,7 @@ require 'rails_helper'
 RSpec.describe 'users/lists', type: :system do
   describe '#create' do
     context 'ログイン状態で通知を受け取るボタンを押した場合' do
-      # exampleを2つにわけるとAPIのアクセス制限でエラーになってしまうので、例外的にrubocopを解除
-      it '登録に成功してボタンが非活性になっている' do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
+      it '登録に成功してボタンが非活性になっている' do
         visit_with_auth root_path, :alice
         fill_in '検索ワード or ISBN', with: '9784774193977'
         click_button '検索する'
