@@ -8,7 +8,7 @@ RSpec.describe 'DmmCrawler', type: :system do
     let(:crawler) { DmmCrawler.new }
     let(:book) { build(:perfect_rails) }
 
-    it '金額は数値、URLはhttps://book.dmm.com/detail/から始まること' do # rubocop:disable RSpec/MultipleExpectations
+    it '金額は数値、URLはhttps://book.dmm.com/detail/から始まること' do
       crawler.run(book.title)
       expect(crawler.price).to be_integer
       expect(crawler.book_url).to be_include 'https://book.dmm.com/detail/'

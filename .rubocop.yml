@@ -22,3 +22,11 @@ ContextWording:
 NestedGroups:
   Exclude:
     - spec/**/*
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/system/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/system/*
