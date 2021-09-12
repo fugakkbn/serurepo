@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="dd931089-e098-4bdf-af70-adb492bceeb8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../sandbox/100_knock/extract_hash_and_concatenate.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/serurepo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/serurepo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/channels/consumer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/channels/consumer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/channels/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/channels/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpacker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpacker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +49,11 @@
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="false" RAKE_SPRING_PRE_LOADER_OPTION="false" RAILS_SPRING_PRE_LOADER_OPTION="false" />
   <component name="TaskManager">
@@ -68,7 +83,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
