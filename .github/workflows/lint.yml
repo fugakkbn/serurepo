@@ -37,5 +37,5 @@ jobs:
     - name: Slim Lint
       run: bundle exec slim-lint app/views
 
-#     - name: JS Lint
-#       run: bin/yarn lint
+    - name: JS Lint
+      run: bin/yarn lint
