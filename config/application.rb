@@ -12,6 +12,8 @@ module Serurepo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.i18n.default_locale = :ja
+
     config.generators do |g|
       g.test_framework :rspec,
                        view_specs: false,
@@ -24,7 +26,10 @@ module Serurepo
       g.helper false
       g.assets false
     end
-    config.i18n.default_locale = :ja
+
+    config.generators.after_generate do |files|
+      system('bundle exec rubocop --auto-correct-all ' + files.join(' '), exception: true)
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
