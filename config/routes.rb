@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  namespace :api do
+    namespace :users do
+      resources :lists, only: %i[show]
+    end
+  end
+
   namespace :users do
     resources :lists, only: %i[create show]
   end
