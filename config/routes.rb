@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :users do
-      resources :lists, only: %i[show]
+      resources :lists, only: %i[show], defaults: { format: :json }
     end
   end
 
