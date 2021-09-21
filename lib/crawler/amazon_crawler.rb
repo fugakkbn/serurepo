@@ -18,7 +18,7 @@ class AmazonCrawler < Crawler
     start_scraping @url do
       fill_in 'twotabsearchtextbox', with: isbn
       click_on '検索'
-      within 'h2.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-4' do
+      within 'h2.a-size-mini.a-spacing-none.a-color-base' do
         find('.a-link-normal.a-text-normal').click
       end
 
