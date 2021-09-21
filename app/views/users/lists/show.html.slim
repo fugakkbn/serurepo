@@ -1,5 +1,6 @@
+- provide(:title, 'セール通知リスト')
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    | セール通知リスト
+    = yield(:title)
 
   #js-users-lists-books(data-list-id="#{@list_id}")

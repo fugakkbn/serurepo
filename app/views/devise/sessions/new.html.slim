@@ -1,6 +1,7 @@
+- provide(:title, t('.sign_in'))
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    = t('.sign_in')
+    = yield(:title)
 
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field

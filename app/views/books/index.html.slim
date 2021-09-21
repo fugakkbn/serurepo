@@ -1,6 +1,7 @@
+- provide(:title, '検索結果')
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    | 検索結果
+    = yield(:title)
 
   - if @total_num.zero?
     .block

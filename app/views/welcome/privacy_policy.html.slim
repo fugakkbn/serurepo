@@ -1,7 +1,8 @@
+- provide(:title, 'プライバシーポリシー')
 .section
   .content
     h2.title.is-4.has-text-centered
-      | プライバシーポリシー
+      = yield(:title)
 
     h3
       | お客様から取得する情報

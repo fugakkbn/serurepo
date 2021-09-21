@@ -1,6 +1,7 @@
+- provide(:title, t('.resend_confirmation_instructions'))
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    = t('.resend_confirmation_instructions')
+    = yield(:title)
 
   = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
     = render 'devise/shared/error_messages', resource: resource
