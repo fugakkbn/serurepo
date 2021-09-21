@@ -1,5 +1,6 @@
+- provide(:title, '書籍検索')
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    | 書籍検索
+    = yield(:title)
 
   = render 'books/shared/search_form'

@@ -1,6 +1,7 @@
+- provide(:title, t('.forgot_your_password'))
 section.section.is-medium
   h2.title.is-4.has-text-centered
-    = t('.forgot_your_password')
+    = yield(:title)
 
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     = render 'devise/shared/error_messages', resource: resource
