@@ -44,6 +44,6 @@ jobs:
         yarn install
     - name: setup DB
       run: |
-        bundle exec rails db:schema:load
+        bin/rails db:schema:load
     - name: Run tests
       run: bundle exec rspec
