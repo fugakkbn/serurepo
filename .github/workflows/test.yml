@@ -23,31 +23,15 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0.2
-    - name: Cache gems
-      uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: Install dependencies
+        bundler-cache: true
+
+    - name: Install yarn
       run: |
-        gem install bundler
-        bundle install --path vendor/bundle --without production
-        yarn install
-    - name: Set env
-      run: |
-        echo '::set-env name=RAILS_ENV::test'
-        echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/serurepo_test'
+        yarn install --check-files
+        
     - name: setup DB
       run: |
         bin/rails db:schema:load
+        
     - name: Run tests
       run: bundle exec rspec
