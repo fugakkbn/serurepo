@@ -1,11 +1,20 @@
 name: test
+
 on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.0']
+    env:
+      RAILS_ENV: test
     services:
       postgres:
         image: postgres
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -15,23 +24,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 5432:5432
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.2
+        ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
-
-    - name: Install yarn
-      run: |
-        yarn install --check-files
         
-    - name: setup DB
-      run: |
-        bin/rails db:schema:load
-        
+    - name: yarn install
+      run: yarn install --check-files
+      
     - name: Run tests
       run: bundle exec rspec
