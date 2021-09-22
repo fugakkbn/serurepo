@@ -42,6 +42,10 @@ jobs:
         gem install bundler
         bundle install --path vendor/bundle --without production
         yarn install
+    - name: Set env
+      run: |
+        echo '::set-env name=RAILS_ENV::test'
+        echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/serurepo_test'
     - name: setup DB
       run: |
         bin/rails db:schema:load
