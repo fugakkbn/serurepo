@@ -36,15 +36,16 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
         
+    - name: yarn install
+      run: yarn install --check-files
+      
+      
     - name: Create dot env file
     - shell: bash
       run: |
         touch .env
         echo "RAKUTEN_AF_ID=${{ secrets.RAKUTEN_AF_ID }}" >> .env
         echo "RAKUTEN_APP_ID=${{ secrets.RAKUTEN_APP_ID }}" >> .env
-        
-    - name: yarn install
-      run: yarn install --check-files
       
     - name: Run tests
       run: bundle exec rspec
