@@ -30,6 +30,7 @@ jobs:
           --health-retries 5
     steps:
     - uses: actions/checkout@v2
+    
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -41,7 +42,6 @@ jobs:
       
       
     - name: Create dot env file
-    - shell: bash
       run: |
         touch .env
         echo "RAKUTEN_AF_ID=${{ secrets.RAKUTEN_AF_ID }}" >> .env
