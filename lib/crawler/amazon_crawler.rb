@@ -17,7 +17,7 @@ class AmazonCrawler < Crawler
     data = []
     start_scraping @url do
       fill_in 'twotabsearchtextbox', with: isbn
-      click_on '検索'
+      find('#nav-search-submit-button').click
       within 'h2.a-size-mini.a-spacing-none.a-color-base' do
         find('.a-link-normal.a-text-normal').click
       end
@@ -33,7 +33,10 @@ class AmazonCrawler < Crawler
       data << paper_price
 
       ver_list_dom[0].click
-      data << current_url.split('/')[5]
+
+      split_url = current_url.split('/')
+      before_target_index = split_url.index('dp')
+      data << split_url[before_target_index.next]
     end
     @kindle_price, @paper_price, @asin = data
   end
