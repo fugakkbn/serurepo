@@ -1,4 +1,5 @@
 [![Lint](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml)
+[![test](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml)
 
 # せるれぽとは
 「いつか買おうと思っている書籍」がセールになったときに通知するサービスです。<br>
