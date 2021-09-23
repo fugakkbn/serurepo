@@ -33,6 +33,7 @@ class AmazonCrawler < Crawler
       data << paper_price
 
       ver_list_dom[0].click
+      p current_url
       data << current_url.split('/')[5]
     end
     @kindle_price, @paper_price, @asin = data
