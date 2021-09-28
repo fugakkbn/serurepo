@@ -9,8 +9,9 @@ RSpec.describe 'users/lists', type: :system do
         visit_with_auth root_path, :alice
         fill_in '検索ワード or ISBN', with: '9784774193977'
         click_button '検索する'
-        click_button 'セール通知を受け取る'
-        expect(page).to have_content 'リストに追加しました！'
+        accept_alert do
+          click_button 'セール通知を受け取る'
+        end
         expect(page).to have_button 'リスト登録済み', disabled: true
       end
     end
