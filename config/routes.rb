@@ -11,14 +11,19 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :users do
-      resources :lists, only: %i[show], defaults: { format: :json }
+      resources :lists, only: %i[show create]
     end
+    namespace :list_details do
+      resources :id, only: %i[index], controller: 'id'
+    end
+    resources :books, only: %i[show create]
+    resources :list_details, only: %i[create]
   end
 
   namespace :users do
-    resources :lists, only: %i[create show]
+    resources :lists, only: %i[show]
   end
 
   resources :books, only: %i[index]
