@@ -11,3 +11,4 @@ Rails.start()
 ActiveStorage.start()
 
 require('../users_lists_books.js')
+require('../searched_books.js')

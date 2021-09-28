@@ -13,41 +13,7 @@ section.section.is-medium
       p = "検索結果：#{@total_num}件"
       p = "#{@first_num} - #{@last_num}件目"
 
-    .block
-      - @items.each do |item_hash|
-        - item = item_hash['Item']
-        .media
-          figure.media-left
-            p
-              = image_tag item['mediumImageUrl']
-          .media-content
-            .content
-              p
-                = link_to item['title'], item['affiliateUrl'], id: 'book-title'
-              p.is-size-7
-                = "著者　#{item['author']}"
-                br
-                = "発売　#{item['salesDate']}"
-                br
-                = "定価　#{format_price(item['itemPrice'])}"
-            nav.level
-              .level-right
-                .level-item
-                  - if registered?(item['isbn'], current_user)
-                    button.button.is-light(disabled)
-                      | リスト登録済み
-                  - else
-                    = form_with(model: List.new, url: users_lists_path, method: :post) do |f|
-                      = f.fields_for Book.new do |detail|
-                        = detail.hidden_field 'isbn_13', value: item['isbn']
-                        = detail.hidden_field :price, value: item['itemPrice']
-                        = detail.hidden_field :title, value: item['title']
-                        = detail.hidden_field :author, value: item['author']
-                        = detail.hidden_field :image, value: item['mediumImageUrl']
-                        = detail.hidden_field :url, value: item['affiliateUrl']
-                        = detail.hidden_field :sales_date, value: item['salesDate']
-                      .actions
-                        = f.submit 'セール通知を受け取る', class: 'button is-success'
+    #js-searched-books.block(data-searched-books="#{@items.to_json}")
 
     nav.pagination.is-centered
       - if @page_num != 1
