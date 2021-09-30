@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     namespace :list_details do
       resources :id, only: %i[index], controller: 'id'
     end
-    resources :books, only: %i[show create]
+    resources :books, only: %i[create]
     resources :list_details, only: %i[create]
   end
 

@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class Api::BooksController < ApplicationController
-  def show
-    if Book.find('isbn_13' => params['isbn_13']).present?
-      render status: :ok, json: { bookId: book.id }
-    else
-      render status: :unprocessable_entity, json: { bookId: nil }
-    end
-  end
-
   def create
     isbn = params['isbn_13']
 
