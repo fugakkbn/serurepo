@@ -87,8 +87,10 @@ export default {
           'X-CSRF-Token': this.token()
         },
         body: JSON.stringify({
-          list_id: this.listId,
-          book_id: this.bookId
+          list_detail: {
+            list_id: this.listId,
+            book_id: this.bookId
+          }
         }),
         credentials: 'same-origin'
       })
@@ -113,13 +115,15 @@ export default {
           'X-CSRF-Token': this.token()
         },
         body: JSON.stringify({
-          isbn_13: this.book.isbn,
-          price: this.book.itemPrice,
-          title: this.book.title,
-          author: this.book.author,
-          image: this.book.mediumImageUrl,
-          url: this.book.affiliateUrl,
-          sales_date: this.book.salesDate
+          book: {
+            isbn_13: this.book.isbn,
+            price: this.book.itemPrice,
+            title: this.book.title,
+            author: this.book.author,
+            image: this.book.mediumImageUrl,
+            url: this.book.affiliateUrl,
+            sales_date: this.book.salesDate
+          }
         }),
         credentials: 'same-origin'
       })

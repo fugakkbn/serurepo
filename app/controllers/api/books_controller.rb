@@ -2,9 +2,9 @@
 
 class Api::BooksController < ApplicationController
   def create
-    isbn = params['isbn_13']
+    isbn = params['book']['isbn_13']
 
-    unless Book.find_by('isbn_13' => isbn).nil?
+    if Book.find_by('isbn_13' => isbn).present?
       book = Book.find_by('isbn_13' => isbn)
       render status: :ok, json: { bookId: book.id }
       return
