@@ -6,6 +6,30 @@ section.section.is-medium
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'block' }) do |f|
     = render 'devise/shared/error_messages', resource: resource
 
+    .field
+      = f.label :discount_rating, class: 'label'
+      p.block 書籍の金額が設定した割引率分安くなった時にメールで通知します。
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
+          | 10％以下
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :between10_and20, class: 'radio', checked: current_user.discount_rating.between10_and20?
+          | 11％〜20％
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :between20_and30, class: 'radio', checked: current_user.discount_rating.between20_and30?
+          | 21％〜30％
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :between30_and50, class: 'radio', checked: current_user.discount_rating.between30_and50?
+          | 31％〜50％
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
+          | 50％以上
+
     .field style="width: 327px;"
       = f.label :email, class: 'label'
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
