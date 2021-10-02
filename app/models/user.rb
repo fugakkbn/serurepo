@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
+  flag :discount_rating, %i[even between10_and20 between20_and30 between30_and50 over50]
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
