@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'active_flag'
 gem 'bulma-rails', '~> 0.9.1'
 gem 'capybara', '>= 3.26'
 gem 'devise'
