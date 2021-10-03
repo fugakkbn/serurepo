@@ -1,0 +1,14 @@
+list1:
+  user: rating_even
+
+list2:
+  user: rating_over10
+
+list3:
+  user: rating_over20
+
+list4:
+  user: rating_over30
+
+list5:
+  user: rating_over50
