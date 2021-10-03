@@ -8,27 +8,26 @@ section.section.is-medium
 
     .field
       = f.label :discount_rating, class: 'label'
-      p.block 書籍の金額が設定した割引率分安くなった時にメールで通知します。
       .block
         label.radio
           = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
-          | 10％以下
+          | すべて通知する
       .block
         label.radio
-          = f.radio_button :discount_rating, :between10_and20, class: 'radio', checked: current_user.discount_rating.between10_and20?
-          | 11％〜20％
+          = f.radio_button :discount_rating, :over10, class: 'radio', checked: current_user.discount_rating.over10?
+          | 10％以上安ければ通知する
       .block
         label.radio
-          = f.radio_button :discount_rating, :between20_and30, class: 'radio', checked: current_user.discount_rating.between20_and30?
-          | 21％〜30％
+          = f.radio_button :discount_rating, :over20, class: 'radio', checked: current_user.discount_rating.over20?
+          | 20％以上安ければ通知する
       .block
         label.radio
-          = f.radio_button :discount_rating, :between30_and50, class: 'radio', checked: current_user.discount_rating.between30_and50?
-          | 31％〜50％
+          = f.radio_button :discount_rating, :over30, class: 'radio', checked: current_user.discount_rating.over30?
+          | 30％以上安ければ通知する
       .block
         label.radio
           = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
-          | 50％以上
+          | 50％以上安ければ通知する
 
     .field style="width: 327px;"
       = f.label :email, class: 'label'
