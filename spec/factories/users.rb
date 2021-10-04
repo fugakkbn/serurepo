@@ -7,6 +7,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
   end
+
   factory :google_oauth, class: 'User' do
     email { 'google@example.com' }
     password { 'password' }
@@ -14,5 +15,45 @@ FactoryBot.define do
     confirmed_at { Time.current }
     uid { '123456789' }
     provider { 'google_oauth2' }
+  end
+
+  factory :rating_even, class: 'User' do
+    email { 'even@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.current }
+    discount_rating { :even }
+  end
+
+  factory :rating_over10, class: 'User' do
+    email { 'over10@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.current }
+    discount_rating { :over10 }
+  end
+
+  factory :rating_over20, class: 'User' do
+    email { 'over20@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.current }
+    discount_rating { :over20 }
+  end
+
+  factory :rating_over30, class: 'User' do
+    email { 'over30@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.current }
+    discount_rating { :over30 }
+  end
+
+  factory :rating_over50, class: 'User' do
+    email { 'over50@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    confirmed_at { Time.current }
+    discount_rating { :over50 }
   end
 end

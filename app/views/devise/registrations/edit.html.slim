@@ -6,6 +6,29 @@ section.section.is-medium
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'block' }) do |f|
     = render 'devise/shared/error_messages', resource: resource
 
+    .field
+      = f.label :discount_rating, class: 'label'
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
+          | すべて通知する
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :over10, class: 'radio', checked: current_user.discount_rating.over10?
+          | 10％以上安ければ通知する
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :over20, class: 'radio', checked: current_user.discount_rating.over20?
+          | 20％以上安ければ通知する
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :over30, class: 'radio', checked: current_user.discount_rating.over30?
+          | 30％以上安ければ通知する
+      .block
+        label.radio
+          = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
+          | 50％以上安ければ通知する
+
     .field style="width: 327px;"
       = f.label :email, class: 'label'
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'

@@ -1,0 +1,99 @@
+list_detail1:
+  list: list1
+  book: cherry
+
+list_detai2:
+  list: list1
+  book: fun_ruby
+
+list_detail3:
+  list: list1
+  book: perfect_rails
+
+list_detail4:
+  list: list1
+  book: cho_nyumon
+
+list_detail5:
+  list: list1
+  book: genba_rails
+
+list_detail6:
+  list: list2
+  book: cherry
+
+list_detai7:
+  list: list2
+  book: fun_ruby
+
+list_detail8:
+  list: list2
+  book: perfect_rails
+
+list_detail9:
+  list: list2
+  book: cho_nyumon
+
+list_detail10:
+  list: list2
+  book: genba_rails
+
+list_detail11:
+  list: list3
+  book: cherry
+
+list_detai12:
+  list: list3
+  book: fun_ruby
+
+list_detail13:
+  list: list3
+  book: perfect_rails
+
+list_detail14:
+  list: list3
+  book: cho_nyumon
+
+list_detail15:
+  list: list3
+  book: genba_rails
+
+list_detail16:
+  list: list4
+  book: cherry
+
+list_detai17:
+  list: list4
+  book: fun_ruby
+
+list_detail18:
+  list: list4
+  book: perfect_rails
+
+list_detail19:
+  list: list4
+  book: cho_nyumon
+
+list_detail20:
+  list: list4
+  book: genba_rails
+
+list_detail21:
+  list: list5
+  book: cherry
+
+list_detai22:
+  list: list5
+  book: fun_ruby
+
+list_detail23:
+  list: list5
+  book: perfect_rails
+
+list_detail24:
+  list: list5
+  book: cho_nyumon
+
+list_detail25:
+  list: list5
+  book: genba_rails
