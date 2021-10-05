@@ -19,6 +19,18 @@ class Api::ListDetailsController < ApplicationController
     end
   end
 
+  def destroy
+    list_detail = ListDetail.find(params[:id])
+
+    if list_detail.destroy
+      render status: :ok,
+             json: { successMessage: '削除しました。' }
+    else
+      render status: :unprocessable_entity,
+             json: { errorMessage: '削除できませんでした。' }
+    end
+  end
+
   private
 
   def list_detail_params
