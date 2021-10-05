@@ -5,6 +5,7 @@
       :key="book.list_detail_id"
       :book="book.book"
       :list-detail-id="book.list_detail_id"
+      @delete-list-detail="getBooks"
     ></book-item>
   </div>
 </template>
