@@ -7,13 +7,7 @@
       <div class="level">
         <div class="level-right">
           <div class="level-item">
-            <a
-              :href="deleteUrl"
-              data-confirm="削除してよろしいですか？"
-              data-method="delete"
-              class="button is-danger"
-              >削除する</a
-            >
+            <a class="button is-danger" @click="deleteListDetail">削除する</a>
           </div>
         </div>
       </div>
@@ -41,12 +35,48 @@ export default {
   },
   data() {
     return {
-      deleteUrl: `/list_details/${this.listDetailId}`
+      deleteUrl: `/list_details/${this.listDetailId}`,
+      deleted: false
+    }
+  },
+  watch: {
+    deleted(newValue) {
+      if (newValue) {
+        this.$emit('delete-list-detail')
+      }
     }
   },
   methods: {
+    deleteListDetail() {
+      if (confirm('削除してよろしいですか？')) {
+        fetch(`/api/list_details/${this.listDetailId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': this.token()
+          },
+          credentials: 'same-origin'
+        })
+          .then((response) => {
+            return response.json()
+          })
+          .then((json) => {
+            this.deleted = true
+            if (json.errorMessage) {
+              alert(json.errorMessage)
+            } else if (json.successMessage) {
+              alert(json.successMessage)
+            }
+          })
+      }
+    },
     formatPrice(price) {
       return `${price.toLocaleString()}円`
+    },
+    token() {
+      const meta = document.querySelector('meta[name="csrf-token"]')
+      return meta ? meta.getAttribute('content') : ''
     }
   }
 }
