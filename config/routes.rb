@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :id, only: %i[index], controller: 'id'
     end
     resources :books, only: %i[create]
-    resources :list_details, only: %i[create]
+    resources :list_details, only: %i[create destroy]
   end
 
   namespace :users do
@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   end
 
   resources :books, only: %i[index]
-  resources :list_details, only: %i[destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

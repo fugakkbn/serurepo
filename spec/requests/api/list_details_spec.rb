@@ -82,4 +82,41 @@ RSpec.describe 'Api::ListDetails', type: :request do
       end
     end
   end
+
+  describe 'DELETE /destroy' do
+    let!(:list_detail) { create(:list_detail_one) }
+    let(:user) { list_detail.list.user }
+
+    context 'ログイン状態の場合' do
+      context '正常な値の場合' do
+        it '200が返ること' do
+          sign_in user
+          delete api_list_detail_path(list_detail.id)
+          expect(response).to have_http_status(:ok)
+        end
+
+        it 'リスト詳細が1件減ること' do
+          sign_in user
+          expect { delete api_list_detail_path(list_detail.id) }.to change(ListDetail, :count).by(-1)
+        end
+
+        it '「削除しました。」とメッセージが表示されること' do
+          sign_in user
+          delete api_list_detail_path(list_detail.id)
+          expect(JSON.parse(response.body)['successMessage']).to eq '削除しました。'
+        end
+      end
+    end
+
+    context '未ログインの場合' do
+      it '401が返ること' do
+        delete api_list_detail_path(list_detail.id)
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+      it '削除がされないこと' do
+        expect { delete api_list_detail_path(list_detail.id) }.not_to change(ListDetail, :count)
+      end
+    end
+  end
 end
