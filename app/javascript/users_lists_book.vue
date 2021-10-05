@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      deleteUrl: `/list_details/${this.listDetailId}`,
+      deleteUrl: `/api/list_details/${this.listDetailId}`,
       deleted: false
     }
   },
@@ -49,7 +49,7 @@ export default {
   methods: {
     deleteListDetail() {
       if (confirm('削除してよろしいですか？')) {
-        fetch(`/api/list_details/${this.listDetailId}`, {
+        fetch(this.deleteUrl, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -62,10 +62,10 @@ export default {
             return response.json()
           })
           .then((json) => {
-            this.deleted = true
             if (json.errorMessage) {
               alert(json.errorMessage)
             } else if (json.successMessage) {
+              this.deleted = true
               alert(json.successMessage)
             }
           })
