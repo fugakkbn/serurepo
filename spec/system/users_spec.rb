@@ -4,9 +4,100 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
   describe '新規登録画面' do
-    it 'Googleログインボタンが表示されること' do
+    it 'Eメール、パスワード、パスワード確認入力フォームとGoogleログインボタンが表示されること' do
       visit new_user_registration_path
+      expect(page).to have_css 'input#user_email'
+      expect(page).to have_css 'input#user_password'
+      expect(page).to have_css 'input#user_password_confirmation'
       expect(page).to have_selector "img[src$='google_oauth2_sign_in.png']"
+    end
+
+    context '全てのフォームが入力されている場合' do
+      context '正しい入力値の場合' do
+        it '登録され、アカウント有効化を促すメッセージが表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード', with: 'password'
+          fill_in 'パスワード（確認用）', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+        end
+      end
+
+      context '重複するメールアドレスの場合' do
+        it '「Eメールはすでに存在します」と表示されること' do
+          user = create(:alice)
+          visit new_user_registration_path
+          fill_in 'Eメール', with: user.email
+          fill_in 'パスワード', with: 'password'
+          fill_in 'パスワード（確認用）', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'Eメールはすでに存在します'
+        end
+      end
+
+      context 'パスワードと確認用パスワードが一致しない場合' do
+        it '「パスワード（確認用）とパスワードの入力が一致しません」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード', with: 'password'
+          fill_in 'パスワード（確認用）', with: 'passpass'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
+        end
+      end
+
+      context 'パスワードが5文字の場合' do
+        it '「パスワードは6文字以上で入力してください」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード', with: 'passw'
+          fill_in 'パスワード（確認用）', with: 'passw'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'パスワードは6文字以上で入力してください'
+        end
+      end
+    end
+
+    context '未入力のフォームがある場合' do
+      context 'メールアドレスが未入力の場合' do
+        it '「Eメールを入力してください」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'パスワード', with: 'password'
+          fill_in 'パスワード（確認用）', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'Eメールを入力してください'
+        end
+      end
+
+      context 'パスワードが未入力の場合' do
+        it '「パスワードを入力してください」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード（確認用）', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'パスワードを入力してください'
+        end
+      end
+
+      context '確認用パスワードが未入力の場合' do
+        it '「パスワード（確認用）とパスワードの入力が一致しません」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
+        end
+      end
+
+      context 'パスワードと確認用パスワードが未入力の場合' do
+        it '「パスワードを入力してください」と表示されること' do
+          visit new_user_registration_path
+          fill_in 'Eメール', with: 'test@example.com'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'パスワードを入力してください'
+        end
+      end
     end
   end
 
