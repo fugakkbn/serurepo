@@ -102,9 +102,73 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe 'ログイン画面' do
-    it 'Googleログインボタンが表示されること' do
+    it 'Eメール、パスワード入力フォームとGoogleログインボタンが表示されること' do
       visit new_user_session_path
+      expect(page).to have_css 'input#user_email'
+      expect(page).to have_css 'input#user_password'
       expect(page).to have_selector "img[src$='google_oauth2_sign_in.png']"
+    end
+
+    context '全てのフォームが入力されている場合' do
+      it '「ログインしました。」と表示されること' do
+        user = create(:alice)
+        visit new_user_session_path
+        fill_in 'Eメール', with: user.email
+        fill_in 'パスワード', with: user.password
+        click_button 'ログイン'
+        expect(page).to have_content 'ログインしました。'
+      end
+    end
+
+    context '未入力のフォームがある場合' do
+      context 'すべて未入力の場合' do
+        it '「Eメールまたはパスワードが違います。」と表示されること' do
+          visit new_user_session_path
+          click_button 'ログイン'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
+        end
+      end
+
+      context 'メールアドレスが未入力の場合' do
+        it '「Eメールまたはパスワードが違います。」と表示されること' do
+          visit new_user_session_path
+          fill_in 'パスワード', with: 'password'
+          click_button 'ログイン'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
+        end
+      end
+
+      context 'パスワードが未入力の場合' do
+        it '「Eメールまたはパスワードが違います。」と表示されること' do
+          visit new_user_session_path
+          fill_in 'Eメール', with: 'test@example.com'
+          click_button 'ログイン'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
+        end
+      end
+    end
+
+    context '入力に不備がある場合' do
+      context 'メールアドレスが未登録の場合' do
+        it '「Eメールまたはパスワードが違います。」と表示されること' do
+          visit new_user_session_path
+          fill_in 'Eメール', with: 'test@example.com'
+          fill_in 'パスワード', with: 'password'
+          click_button 'ログイン'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
+        end
+      end
+
+      context 'パスワードが間違っている場合' do
+        it '「Eメールまたはパスワードが違います。」と表示されること' do
+          user = create(:alice)
+          visit new_user_session_path
+          fill_in 'Eメール', with: user.email
+          fill_in 'パスワード', with: 'testpass'
+          click_button 'ログイン'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
+        end
+      end
     end
   end
 
