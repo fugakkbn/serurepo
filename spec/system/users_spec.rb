@@ -173,13 +173,15 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe 'アカウント編集' do
+    before do
+      login user
+      visit edit_user_registration_path
+    end
+
     context '通常登録ユーザーの場合' do
-      let(:alice) { create(:alice) }
+      let(:user) { create(:alice) }
 
       it 'すべてのフォームがあること' do
-        login alice
-        visit edit_user_registration_path
-
         expect(page).to have_css 'input#user_email'
         expect(page).to have_css 'input#user_password'
         expect(page).to have_css 'input#user_password_confirmation'
@@ -192,15 +194,103 @@ RSpec.describe 'Users', type: :system do
         expect(page).to have_link 'ログアウト', href: destroy_user_session_path
         expect(page).to have_link 'アカウント削除', href: user_registration_path
       end
+
+      it 'パスワードなしで割引率を更新できること' do
+        choose '20％以上安ければ通知する'
+        click_button '更新'
+        expect(page).to have_content 'アカウント情報を変更しました。'
+
+        visit edit_user_registration_path
+        expect(page).to have_checked_field '20％以上安ければ通知する'
+      end
+
+      it 'パスワードなしでEメールを更新できること' do
+        fill_in 'Eメール', with: 'testtest@example.com'
+        expect { click_button '更新' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+        expect(page).to have_content 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
+
+        token = User.find(user.id).confirmation_token
+        visit user_confirmation_path(confirmation_token: token)
+        expect(page).to have_content 'メールアドレスが確認できました。'
+
+        visit edit_user_registration_path
+        expect(page).to have_field 'Eメール', with: 'testtest@example.com'
+      end
+
+      it 'パスワードを更新できること' do
+        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード（確認用）', with: 'password'
+        fill_in '現在のパスワード', with: user.password
+        click_button '更新'
+        expect(page).to have_content 'アカウント情報を変更しました。'
+      end
+
+      it 'ログアウトできること' do
+        click_link 'ログアウト'
+        expect(page).to have_content 'ログアウトしました。'
+      end
+
+      it 'アカウントを削除できること' do
+        page.accept_confirm do
+          click_link 'アカウント削除'
+        end
+        expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+      end
+
+      context '入力に不備がある場合' do
+        context 'メールアドレスが登録済みの場合' do
+          it 'Eメールはすでに存在しますと表示されること' do
+            other_user = create(:rating_even)
+            fill_in 'Eメール', with: other_user.email
+            click_button '更新'
+            expect(page).to have_content 'Eメールはすでに存在します'
+          end
+        end
+
+        context 'パスワードとパスワード(確認用)が一致しない場合' do
+          it '「パスワード（確認用）とパスワードの入力が一致しません」と表示されること' do
+            fill_in 'パスワード', with: 'password'
+            fill_in 'パスワード（確認用）', with: 'passworddd'
+            fill_in '現在のパスワード', with: user.password
+            click_button '更新'
+            expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
+          end
+        end
+
+        context 'パスワード（確認用）が未入力の場合' do
+          it '「パスワード（確認用）とパスワードの入力が一致しません」と表示されること' do
+            fill_in 'パスワード', with: 'password'
+            fill_in '現在のパスワード', with: user.password
+            click_button '更新'
+            expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
+          end
+        end
+
+        context '現在のパスワードが未入力の場合' do
+          it '「現在のパスワードを入力してください」と表示されること' do
+            fill_in 'パスワード', with: 'password'
+            fill_in 'パスワード（確認用）', with: 'password'
+            click_button '更新'
+            expect(page).to have_content '現在のパスワードを入力してください'
+          end
+        end
+
+        context '現在のパスワードが間違っている場合' do
+          it '「現在のパスワードは不正な値です」と表示されること' do
+            fill_in 'パスワード', with: 'password'
+            fill_in 'パスワード（確認用）', with: 'password'
+            fill_in '現在のパスワード', with: 'testtest'
+            click_button '更新'
+            expect(page).to have_content '現在のパスワードは不正な値です'
+          end
+        end
+      end
     end
 
     context 'Google認証で登録したユーザーの場合' do
-      let(:google) { create(:google_oauth) }
+      let(:user) { create(:google_oauth) }
 
       it 'メールアドレス入力フォーム、割引率設定、ログアウト・削除リンクのみがあること' do
-        login google
-        visit edit_user_registration_path
-
         expect(page).to have_css 'input#user_email'
         expect(page).to have_link 'ログアウト', href: destroy_user_session_path
         expect(page).to have_link 'アカウント削除', href: user_registration_path
@@ -212,6 +302,40 @@ RSpec.describe 'Users', type: :system do
         expect(page).not_to have_css 'input#user_password'
         expect(page).not_to have_css 'input#user_password_confirmation'
         expect(page).not_to have_css 'input#user_current_password'
+      end
+
+      it 'パスワードなしで割引率を更新できること' do
+        choose '20％以上安ければ通知する'
+        click_button '更新'
+        expect(page).to have_content 'アカウント情報を変更しました。'
+
+        visit edit_user_registration_path
+        expect(page).to have_checked_field '20％以上安ければ通知する'
+      end
+
+      it 'パスワードなしでEメールを更新できること' do
+        fill_in 'Eメール', with: 'testtest@example.com'
+        expect { click_button '更新' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+        expect(page).to have_content 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
+
+        token = User.find(user.id).confirmation_token
+        visit user_confirmation_path(confirmation_token: token)
+        expect(page).to have_content 'メールアドレスが確認できました。'
+
+        visit edit_user_registration_path
+        expect(page).to have_field 'Eメール', with: 'testtest@example.com'
+      end
+
+      it 'ログアウトできること' do
+        click_link 'ログアウト'
+        expect(page).to have_content 'ログアウトしました。'
+      end
+
+      it 'アカウントを削除できること' do
+        page.accept_confirm do
+          click_link 'アカウント削除'
+        end
+        expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
       end
     end
   end
