@@ -266,6 +266,50 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
+  describe 'アカウント確認メール再送' do
+    let(:email) { 'test@example.com' }
+
+    before do
+      # 前処理 - ユーザー登録
+      visit new_user_registration_path
+      fill_in 'Eメール', with: email
+      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード（確認用）', with: 'password'
+      click_button 'アカウント登録'
+
+      visit new_user_confirmation_path
+    end
+
+    it '要素が表示され、メールが再送されること' do
+      # 要素が表示されていること
+      expect(page).to have_css 'input#user_email'
+      expect(page).to have_button 'アカウント確認メール再送'
+
+      fill_in 'Eメール', with: email
+
+      # メールが送信されていること
+      expect { click_button 'アカウント確認メール再送' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+      # 送信メッセージが表示されること
+      expect(page).to have_content 'アカウントの有効化について数分以内にメールでご連絡します。'
+    end
+
+    context 'メールアドレスが未入力の場合' do
+      it 'メールが送信されず、「Eメールを入力してください」と表示されること' do
+        expect { click_button 'アカウント確認メール再送' }.not_to(change { ActionMailer::Base.deliveries.size })
+        expect(page).to have_content 'Eメールを入力してください'
+      end
+    end
+
+    context 'メールアドレスが見つからない場合' do
+      it 'メールが送信されず、「Eメールは見つかりませんでした。」と表示されること' do
+        fill_in 'Eメール', with: 'testtest@example.com'
+
+        expect { click_button 'アカウント確認メール再送' }.not_to(change { ActionMailer::Base.deliveries.size })
+        expect(page).to have_content 'Eメールは見つかりませんでした。'
+      end
+    end
+  end
+
   describe 'アカウント編集' do
     before do
       login user
