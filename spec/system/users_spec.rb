@@ -172,6 +172,100 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
+  describe 'パスワードリマインダー' do
+    def generate_reset_password_url
+      mail = ActionMailer::Base.deliveries.last
+      body = mail.body.encoded.split(/\r\n/).map { |i| Base64.decode64(i) }.join
+      body[%r{/users/password/edit?[^"]+=\w+}]
+    end
+
+    it 'Eメール入力フォームとボタンが表示されていること' do
+      visit new_user_password_path
+      expect(page).to have_content 'パスワードを忘れましたか？'
+      expect(page).to have_css 'input#user_email'
+      expect(page).to have_button 'パスワードの再設定方法を送信する'
+    end
+
+    context '正しいメールアドレスの場合' do
+      it 'メールが送信され、パスワード変更画面でパスワードを変更できること' do
+        user = create(:alice)
+        visit new_user_password_path
+        fill_in 'Eメール', with: user.email
+
+        # メールが送信されていることを確認
+        expect { click_button 'パスワードの再設定方法を送信する' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+        expect(page).to have_content 'パスワードの再設定について数分以内にメールでご連絡いたします。'
+
+        url = generate_reset_password_url
+        visit url
+
+        # 要素があることを確認
+        expect(page).to have_content 'パスワードを変更'
+        expect(page).to have_css 'input#user_password'
+        expect(page).to have_css 'input#user_password_confirmation'
+        expect(page).to have_button 'パスワードを変更する'
+
+        # 空で送信すると失敗することを確認
+        click_button 'パスワードを変更する'
+        expect(page).to have_content 'パスワードを入力してください'
+
+        # 一致しないと失敗することを確認
+        fill_in '新しいパスワード', with: 'testtest'
+        fill_in '確認用新しいパスワード', with: 'testtesttest'
+        click_button 'パスワードを変更する'
+        expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
+
+        # パスワード更新ができることを確認
+        fill_in '新しいパスワード', with: 'testtest'
+        fill_in '確認用新しいパスワード', with: 'testtest'
+        click_button 'パスワードを変更する'
+        expect(page).to have_content 'パスワードが正しく変更されました。'
+      end
+    end
+
+    context 'メールアドレスが間違っている場合' do
+      it '「Eメールは見つかりませんでした。」と表示されること' do
+        visit new_user_password_path
+        fill_in 'Eメール', with: 'test@example.com'
+        expect { click_button 'パスワードの再設定方法を送信する' }.not_to(change { ActionMailer::Base.deliveries.size })
+        expect(page).to have_content 'Eメールは見つかりませんでした。'
+      end
+    end
+
+    context '間違いがある場合' do
+      context '再設定用URLに間違いがある場合' do
+        it '「このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。」と表示されること' do
+          user = create(:alice)
+          visit new_user_password_path
+          fill_in 'Eメール', with: user.email
+          click_button 'パスワードの再設定方法を送信する'
+
+          visit edit_user_password_path
+          expect(page).to have_content 'このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。'
+        end
+      end
+
+      context 'tokenが期限切れの場合' do
+        it '「パスワードリセット用トークンの有効期限が切れました。新しくリクエストしてください。」と表示されること' do
+          user = create(:alice)
+          visit new_user_password_path
+          fill_in 'Eメール', with: user.email
+          click_button 'パスワードの再設定方法を送信する'
+
+          url = generate_reset_password_url
+          visit url
+
+          travel_to 2.days.from_now do
+            fill_in '新しいパスワード', with: 'testtest'
+            fill_in '確認用新しいパスワード', with: 'testtest'
+            click_button 'パスワードを変更する'
+            expect(page).to have_content 'パスワードリセット用トークンの有効期限が切れました。新しくリクエストしてください。'
+          end
+        end
+      end
+    end
+  end
+
   describe 'アカウント編集' do
     before do
       login user
