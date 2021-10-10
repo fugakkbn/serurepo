@@ -5,11 +5,10 @@ class MailSender
     compared_data.each do |data|
       next if all_data_nil?(data)
 
-      details = ListDetail.where(book_id: data[:book_id])
-      details.each do |detail|
-        user = detail.list.user
+      book = Book.find(data[:book_id])
+      book.lists.each do |list|
+        user = list.user
         discount_rating = get_rating(user)
-        book = Book.find(detail.book_id)
         discounted_price = (book.price * discount_rating).truncate
 
         data[:amazon] = nil if higher_than_discounted_price?(data[:amazon], discounted_price)

@@ -5,7 +5,7 @@ class Users::ListsController < ApplicationController
 
   def show
     @list_id = params[:id]
-    @books = ListDetail.where(list_id: @list_id).map(&:book)
+    @books = List.find(@list_id).books.map { |book| book }
   end
 
   private
