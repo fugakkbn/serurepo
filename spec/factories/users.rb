@@ -6,6 +6,7 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     confirmed_at { Time.current }
+    uid { SecureRandom.uuid }
   end
 
   factory :google_oauth, class: 'User' do
@@ -13,7 +14,7 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     confirmed_at { Time.current }
-    uid { '123456789' }
+    uid { SecureRandom.uuid }
     provider { 'google_oauth2' }
   end
 
@@ -23,6 +24,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
     discount_rating { :even }
+    uid { SecureRandom.uuid }
   end
 
   factory :rating_over10, class: 'User' do
@@ -31,6 +33,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
     discount_rating { :over10 }
+    uid { SecureRandom.uuid }
   end
 
   factory :rating_over20, class: 'User' do
@@ -39,6 +42,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
     discount_rating { :over20 }
+    uid { SecureRandom.uuid }
   end
 
   factory :rating_over30, class: 'User' do
@@ -47,6 +51,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
     discount_rating { :over30 }
+    uid { SecureRandom.uuid }
   end
 
   factory :rating_over50, class: 'User' do
@@ -55,5 +60,6 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.current }
     discount_rating { :over50 }
+    uid { SecureRandom.uuid }
   end
 end
