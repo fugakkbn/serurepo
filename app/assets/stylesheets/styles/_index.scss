@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.title {
+  font-family: 'Kiwi Maru', serif;
+}
+
+section.hero {
+  background: rgba(255, 255, 255, 0.2) url("/only_logo.png") no-repeat top 0 right -210px;
+  background-blend-mode: lighten;
+  height: 500px;
+
+  @include tablet {
+    background: rgba(255, 255, 255, 0.2) url("/only_logo.png") no-repeat top 0 right -180px;
+  }
+}
