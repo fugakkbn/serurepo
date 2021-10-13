@@ -7,11 +7,11 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com', rel: 'preconnect'
+    = stylesheet_link_tag 'https://fonts.gstatic.com', rel: 'preconnect'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
-    link rel="preconnect" href="https://fonts.googleapis.com"
-    link rel="preconnect" href="https://fonts.gstatic.com"
-    link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet"
 
   body
     nav.navbar
@@ -63,4 +63,4 @@ html
       p.has-text-centered
         | ©
         = Time.zone.today.year
-        |せるれぽ
+        |　ふーが
