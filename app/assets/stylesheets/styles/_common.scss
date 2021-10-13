@@ -1,0 +1,16 @@
+@include desktop {
+  .block-centered-desktop {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.container {
+  @include mobile {
+    min-width: 90%;
+  }
+  @include tablet {
+    min-width: 400px;
+  }
+}

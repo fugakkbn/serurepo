@@ -7,11 +7,14 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com', rel: 'preconnect'
+    = stylesheet_link_tag 'https://fonts.gstatic.com', rel: 'preconnect'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
 
   body
-    nav.navbar.is-info
+    nav.navbar
       .container.is-max-desktop
         .navbar-brand
           h1.navbar-item
@@ -21,10 +24,10 @@ html
           - if user_signed_in?
             .navbar-item
               - if current_user.list.present?
-                = link_to users_list_path(current_user.list.id), class: 'has-text-white mr-3'
+                = link_to users_list_path(current_user.list.id), class: 'has-text-info mr-3'
                   span.material-icons.md-36
                     | receipt_long
-              = link_to edit_user_registration_path, class: 'has-text-white'
+              = link_to edit_user_registration_path, class: 'has-text-info'
                 span.material-icons.md-36
                   | manage_accounts
 
@@ -38,8 +41,7 @@ html
           .notification.is-success.is-light
             = tag.div(value, class: 'has-text-centered')
 
-    .container.is-max-desktop
-      = yield
+    = yield
 
     footer.footer
       ul.block.is-flex.is-justify-content-center
