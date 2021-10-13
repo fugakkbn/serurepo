@@ -1,5 +1,5 @@
 - provide(:title, t('.title', resource: resource.model_name.human))
-section.section.is-medium
+section.container.is-max-desktop.px-5.py-4
   h2.title.is-4.has-text-centered
     = yield(:title)
 
@@ -29,7 +29,7 @@ section.section.is-medium
           = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
           | 50％以上安ければ通知する
 
-    .field style="width: 327px;"
+    .field
       = f.label :email, class: 'label'
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -61,7 +61,7 @@ section.section.is-medium
         = f.password_field :current_password, autocomplete: 'current-password', class: 'input'
 
     .actions
-      = f.submit t('.update'), class: 'button is-success'
+      = f.submit t('.update'), class: 'button is-info'
 
   = link_to 'ログアウト', :destroy_user_session, method: :delete
 

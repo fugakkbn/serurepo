@@ -1,5 +1,5 @@
 - provide(:title, t('.forgot_your_password'))
-section.section.is-medium
+section.container.is-max-desktop.px-5
   h2.title.is-4.has-text-centered
     = yield(:title)
 
@@ -11,6 +11,6 @@ section.section.is-medium
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
 
     .actions
-      = f.submit t('.send_me_reset_password_instructions'), class: 'button is-success'
+      = f.submit t('.send_me_reset_password_instructions'), class: 'button is-info'
 
   = render 'devise/shared/links'

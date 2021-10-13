@@ -1,5 +1,5 @@
 - provide(:title, t('.resend_confirmation_instructions'))
-section.section.is-medium
+section.container.is-max-desktop.px-5
   h2.title.is-4.has-text-centered
     = yield(:title)
 
@@ -12,6 +12,6 @@ section.section.is-medium
             value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
 
     .actions
-      = f.submit t('.resend_confirmation_instructions'), class: 'button is-success'
+      = f.submit t('.resend_confirmation_instructions'), class: 'button is-info'
 
   = render 'devise/shared/links'

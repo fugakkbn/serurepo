@@ -1,5 +1,5 @@
 - provide(:title, t('.change_your_password'))
-section.section.is-medium
+section.container.is-max-desktop.px-5
   h2.title.is-4.has-text-centered
     = yield(:title)
 
@@ -16,6 +16,6 @@ section.section.is-medium
       = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input'
 
     .actions
-      = f.submit t('.change_my_password'), class: 'button is-success'
+      = f.submit t('.change_my_password'), class: 'button is-info'
 
   = render 'devise/shared/links'

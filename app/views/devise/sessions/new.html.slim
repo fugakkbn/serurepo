@@ -1,5 +1,5 @@
 - provide(:title, t('.sign_in'))
-section.section.is-medium
+section.container.is-max-desktop.px-5
   h2.title.is-4.has-text-centered
     = yield(:title)
 
@@ -20,6 +20,6 @@ section.section.is-medium
         = f.label :remember_me, class: 'checkbox'
 
     .actions
-      = f.submit t('.sign_in'), class: 'button is-success'
+      = f.submit t('.sign_in'), class: 'button is-info'
 
   = render 'devise/shared/links'
