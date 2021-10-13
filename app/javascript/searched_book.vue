@@ -28,7 +28,7 @@
             </button>
             <button
               v-show="!registeredListDetail"
-              class="button is-success"
+              class="button is-info"
               @click="submit"
             >
               セール通知を受け取る
