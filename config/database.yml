@@ -85,5 +85,6 @@ test:
 production:
   <<: *default
   database: serurepo_production
-  username: serurepo
-  password: <%= ENV['SERUREPO_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
