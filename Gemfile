@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'active_flag'
+gem 'aws-sdk-rails'
 gem 'aws-ses'
 gem 'bulma-rails', '~> 0.9.1'
 gem 'capybara', '>= 3.26'
