@@ -41,7 +41,4 @@ jobs:
       run: yarn install --check-files
       
     - name: Run tests
-      env:
-        RAKUTEN_AF_ID: ${{ secrets.RAKUTEN_AF_ID }}
-        RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
       run: bundle exec rspec
