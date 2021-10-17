@@ -47,7 +47,6 @@ gem 'whenever', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop-fjord', require: false

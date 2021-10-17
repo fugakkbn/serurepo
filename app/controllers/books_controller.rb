@@ -7,7 +7,7 @@ class BooksController < ApplicationController
       @page_num = (params[:page] || 1).to_i
       count_per_page = 20
 
-      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&hits=#{count_per_page}&affiliateId=#{ENV['RAKUTEN_AF_ID']}&applicationId=#{ENV['RAKUTEN_APP_ID']}&page=#{@page_num}"
+      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&hits=#{count_per_page}&affiliateId=#{Rails.application.credentials.rakuten[:af_id]}&applicationId=#{Rails.application.credentials.rakuten[:app_id]}&page=#{@page_num}"
       url += /^978[0-9]{10}/.match?(@query) ? "&isbn=#{@query}" : "&title=#{@query}"
 
       client = HTTPClient.new
