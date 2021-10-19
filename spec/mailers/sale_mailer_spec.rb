@@ -20,7 +20,7 @@ RSpec.describe SaleMailer, type: :mailer do
     end
 
     it '指定のメールアドレスから送信すること' do
-      expect(mail.from).to eq ['aax.chiri@gmail.com']
+      expect(mail.from).to eq ['noreply@serurepo.com']
     end
 
     it '正しい件名で送信すること' do
