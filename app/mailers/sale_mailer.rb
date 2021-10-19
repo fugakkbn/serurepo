@@ -3,7 +3,7 @@
 class SaleMailer < ApplicationMailer
   helper :books
 
-  default from: 'aax.chiri@gmail.com'
+  default from: 'せるれぽ <noreply@serurepo.com>'
 
   def sale_email
     @user = params[:user]
