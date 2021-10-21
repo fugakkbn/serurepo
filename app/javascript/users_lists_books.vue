@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getBooks() {
-      fetch(`/api/users/lists/${this.listId}.json`, {
+      fetch(`/api/users/lists/${this.listId}`, {
         method: 'GET',
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
