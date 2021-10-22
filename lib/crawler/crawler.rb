@@ -21,6 +21,10 @@ class Crawler
     Capybara::Session.new(:selenium).tap do |session|
       session.visit url
       session.instance_eval(&block)
+    rescue StandardError => e
+      Rails.logger.debug "scraping_error: #{session} #{e}"
+    ensure
+      session.quit
     end
   end
 end
