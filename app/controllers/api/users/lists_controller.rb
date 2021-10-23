@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::Users::ListsController < ApplicationController
+class API::Users::ListsController < API::BaseController
   def show
     @list_id = params[:id]
     @books = ListDetail.where(list_id: @list_id).map do |detail|

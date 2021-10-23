@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::ListDetails::IdController < ApplicationController
+class API::ListDetails::IdController < API::BaseController
   def index
     book = Book.find_by('isbn_13' => params['isbn'])
     list = current_user.list

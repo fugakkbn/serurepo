@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::ListDetailsController < ApplicationController
+class API::ListDetailsController < API::BaseController
   def create
     list_detail = params['list_detail']
 
