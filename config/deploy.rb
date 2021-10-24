@@ -51,3 +51,5 @@ set :keep_releases, 5
 
 set :nginx_config_name, 'serurepo.conf'
 set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
+
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
