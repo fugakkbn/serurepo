@@ -70,6 +70,8 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'bcrypt_pbkdf'
+  gem 'ed25519'
   gem 'html2slim'
   gem 'letter_opener_web', '~> 1.0'
   gem 'slim_lint'
