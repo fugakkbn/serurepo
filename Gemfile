@@ -49,6 +49,12 @@ gem 'whenever', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capistrano', '~> 3.16', require: false
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-vars'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop-fjord', require: false
