@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::BooksController < ApplicationController
+class API::BooksController < API::BaseController
   def create
     isbn = params['book']['isbn_13']
 
