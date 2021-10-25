@@ -5,7 +5,3 @@ javascript:
   gtag('js', new Date());
 
   gtag('config', 'G-D276J9CM1X');
-
-  if (#{raw current_user.to_json}) {
-    gtag('set', {'user_id': #{raw current_user.to_json}.id);
-  }
