@@ -11,7 +11,7 @@ module Comparer
       logger = Logger.new('log/crawler.log')
 
       data = []
-      Book.all.each do |book|
+      Book.find_each do |book|
         amazon = AmazonCrawler.new
         dmm = DmmCrawler.new
         rakuten = RakutenCrawler.new
