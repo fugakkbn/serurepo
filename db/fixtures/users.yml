@@ -1,6 +1,6 @@
 test:
   email: test@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf1
   discount_rating: 1
@@ -8,9 +8,10 @@ test:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# google_omniauthで登録
 google_auth:
   email: google@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: google_oauth2
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf7
   discount_rating: 1
@@ -18,9 +19,10 @@ google_auth:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# 通知設定：すべて通知
 rating_even:
   email: even@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf2
   discount_rating: 1
@@ -28,9 +30,10 @@ rating_even:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# 通知設定：10%以上
 rating_over10:
   email: over10@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf3
   discount_rating: 2
@@ -38,9 +41,10 @@ rating_over10:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# 通知設定：20%以上
 rating_over20:
   email: over20@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf4
   discount_rating: 4
@@ -48,9 +52,10 @@ rating_over20:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# 通知設定：30%以上
 rating_over30:
   email: over30@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf5
   discount_rating: 8
@@ -58,9 +63,10 @@ rating_over30:
   created_at: 2021-09-10 09:34:19
   updated_at: 2021-09-10 09:59:46
 
+# 通知設定：50%以上
 rating_over50:
   email: over50@example.com
-  encrypted_password: $2a$12$bV39JWhXWb6LkkzKQHZbjewDM9lADAtxMTq7JR68Ub3dF9mZ2P0ne
+  encrypted_password: $2a$12$Jmy731kpwYe2xiZaYC2BxuZ1RDALaxBOSX9TdVFnkXpM5JXJXMyBu #password
   provider: ''
   uid: 2b410d44-c2fd-4095-8efe-92405bc79cf6
   discount_rating: 16
