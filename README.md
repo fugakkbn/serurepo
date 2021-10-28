@@ -1,3 +1,4 @@
+[![Deploy with Capistrano](https://github.com/FUGA0618/serurepo/actions/workflows/deploy_with_capistrano.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/deploy_with_capistrano.yml)
 [![Lint](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml)
 [![test](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml)
 
