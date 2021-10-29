@@ -45,6 +45,13 @@ $ bin/rails s
 $ bin/rails db:seed
 ```
 
+# Lint & Tests
+
+```shell
+$ ./bin/lint
+$ bundle exec rspec
+```
+
 # Log in
 
 ```
