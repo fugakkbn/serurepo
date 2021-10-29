@@ -17,7 +17,7 @@ module MetaTagsHelper
         url: 'https://serurepo.com'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@fuga__ch',
         description: '「いつか読みたい本」を安いときに。書籍のセール通知サービス。',
         image: 'https://serurepo.com/ogp/ogp.png',
