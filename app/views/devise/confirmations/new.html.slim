@@ -1,6 +1,6 @@
 - provide(:title, t('.resend_confirmation_instructions'))
 section.container.is-max-desktop.px-5
-  h2.title.is-4.has-text-centered
+  h1.title.is-4.has-text-centered
     = yield(:title)
 
   = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
