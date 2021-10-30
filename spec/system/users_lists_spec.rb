@@ -30,7 +30,7 @@ RSpec.describe 'users/lists', type: :system do
         list = create(:list)
         login(list.user)
         visit users_list_path list.id
-        expect(page).to have_selector 'h2', text: 'セール通知リスト'
+        expect(page).to have_selector 'h1', text: 'セール通知リスト'
       end
 
       it '登録した書籍が表示される' do
