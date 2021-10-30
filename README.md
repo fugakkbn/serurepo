@@ -2,9 +2,11 @@
 [![Lint](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml)
 [![test](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml)
 
+![ロゴ_横長](https://user-images.githubusercontent.com/58870882/139534536-65598064-7be0-4a2b-975a-3a722f1a8f8a.png)
+
 # About
 「いつか買おうと思っている書籍」がセールになったときに通知するサービスです。<br>
-サイト上で書籍を検索してリストに追加しておくと、リスト内の書籍がセールになったときに通知します。<br>
+サイト上で書籍を検索して通知を受け取るボタンを押しておくと、その書籍がセールになったときに通知します。<br>
 もう、いろんなサイトでセールをやっていないか確認する必要はないし、書籍のセールを見逃すことはありません。
 
 # URL
