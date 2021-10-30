@@ -10,6 +10,6 @@ section.hero {
   height: 500px;
 
   @include tablet {
-    background: rgba(255, 255, 255, 0.2) url("/only_logo.png") no-repeat top 0 right -180px;
+    background: rgba(255, 255, 255, 0.8) url("/only_logo.png") no-repeat top 0 right -180px;
   }
 }
