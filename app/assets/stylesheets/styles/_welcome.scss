@@ -1,8 +1,10 @@
 .hero-body {
-  .title.is-4 {
+  .title {
     line-height: 1.5;
   }
-  .subtitle.is-6 {
+  .subtitle {
     line-height: 1.6;
+    font-size: 18px !important;
+    font-weight: bold;
   }
 }
