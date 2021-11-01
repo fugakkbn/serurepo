@@ -16,6 +16,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter 'app/channels'
+  add_filter 'app/jobs'
+end
+
 require 'capybara/rspec'
 
 RSpec.configure do |config|
