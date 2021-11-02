@@ -2,9 +2,7 @@
 
 class API::ListDetailsController < API::BaseController
   def create
-    list_detail = params['list_detail']
-
-    if ListDetail.find_by(list_id: list_detail['list_id'], book_id: list_detail['book_id']).present?
+    if registered?
       render status: :bad_request, json: { errorMessage: 'すでに登録済みです。' }
       return
     end
@@ -35,5 +33,10 @@ class API::ListDetailsController < API::BaseController
 
   def list_detail_params
     params.require(:list_detail).permit(:list_id, :book_id)
+  end
+
+  def registered?
+    list_detail = params['list_detail']
+    ListDetail.find_by(list_id: list_detail['list_id'], book_id: list_detail['book_id']).present?
   end
 end
