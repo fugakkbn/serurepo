@@ -3,17 +3,17 @@
 class API::BooksController < API::BaseController
   def create
     isbn = params['book']['isbn13']
+    book = Book.find_by(isbn13: isbn)
 
-    if Book.find_by(isbn13: isbn).present?
-      book = Book.find_by(isbn13: isbn)
+    if book.present?
       render status: :ok, json: { bookId: book.id }
       return
     end
 
-    book = Book.new(book_params)
-    if book.save
+    new_book = Book.new(book_params)
+    if new_book.save
       render status: :created,
-             json: { bookId: book.id }
+             json: { bookId: new_book.id }
     else
       render status: :unprocessable_entity,
              json: { errorMessage: '登録に失敗しました。' }
