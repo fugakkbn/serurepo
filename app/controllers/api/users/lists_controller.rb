@@ -3,14 +3,7 @@
 class API::Users::ListsController < API::BaseController
   def show
     @list_id = params[:id]
-    @books = ListDetail.where(list_id: @list_id).map do |detail|
-      {
-        list_detail_id: detail.id,
-        book: detail.book
-      }
-    end
-
-    render status: :ok, json: { books: @books }
+    @list_details = ListDetail.where(list_id: @list_id)
   end
 
   def create
