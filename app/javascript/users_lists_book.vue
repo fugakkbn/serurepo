@@ -35,15 +35,7 @@ export default {
   },
   data() {
     return {
-      deleteUrl: `/api/list_details/${this.listDetailId}`,
-      deleted: false
-    }
-  },
-  watch: {
-    deleted(newValue) {
-      if (newValue) {
-        this.$emit('delete-list-detail')
-      }
+      deleteUrl: `/api/list_details/${this.listDetailId}`
     }
   },
   methods: {
@@ -65,8 +57,8 @@ export default {
             if (json.errorMessage) {
               alert(json.errorMessage)
             } else if (json.successMessage) {
-              this.deleted = true
               alert(json.successMessage)
+              this.$emit('delete-list-detail')
             }
           })
       }
