@@ -7,7 +7,7 @@ FactoryBot.define do
     image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3977/9784774193977.jpg?_ex=120x120' }
     url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15209044%2F' }
     sales_date { '2017年12月' }
-    isbn_13 { '9784774193977' }
+    isbn13 { '9784774193977' }
     price { 3278 }
   end
 
@@ -17,7 +17,7 @@ FactoryBot.define do
     image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9844/9784797399844.jpg?_ex=120x120' }
     url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15822269%2F' }
     sales_date { '2019年03月20日頃' }
-    isbn_13 { '9784797399844' }
+    isbn13 { '9784797399844' }
     price { 2860 }
   end
 
@@ -27,7 +27,7 @@ FactoryBot.define do
     image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4626/9784297114626.jpg?_ex=120x120' }
     url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F16352336%2F' }
     sales_date { '2020年07月25日頃' }
-    isbn_13 { '9784297114626' }
+    isbn13 { '9784297114626' }
     price { 3828 }
   end
 
@@ -37,7 +37,7 @@ FactoryBot.define do
     image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/1237/9784297101237.jpg?_ex=120x120' }
     url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15664673%2F' }
     sales_date { '2018年12月' }
-    isbn_13 { '9784297101237' }
+    isbn13 { '9784297101237' }
     price { 2728 }
   end
 
@@ -47,7 +47,7 @@ FactoryBot.define do
     image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2227/9784839962227.jpg?_ex=120x120' }
     url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15628625%2F' }
     sales_date { '2018年10月19日頃' }
-    isbn_13 { '9784839962227' }
+    isbn13 { '9784839962227' }
     price { 3828 }
   end
 end

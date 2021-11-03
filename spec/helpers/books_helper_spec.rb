@@ -7,7 +7,7 @@ RSpec.describe BooksHelper, type: :helper do
     context 'ListDetailに登録済みの書籍の場合' do
       it 'trueが返る' do
         list_detail = create(:list_detail_one)
-        isbn = list_detail.book.isbn_13
+        isbn = list_detail.book.isbn13
         user = list_detail.list.user
         expect(helper).to be_registered(isbn, user)
       end
@@ -15,7 +15,7 @@ RSpec.describe BooksHelper, type: :helper do
 
     context 'ListDetailに登録されていない書籍の場合' do
       it 'falseが返る' do
-        isbn = create(:perfect_rails).isbn_13
+        isbn = create(:perfect_rails).isbn13
         user = create(:list).user
         expect(helper).not_to be_registered(isbn, user)
       end
@@ -23,7 +23,7 @@ RSpec.describe BooksHelper, type: :helper do
 
     context 'リスト未作成のユーザーの場合' do
       it 'falseが返る' do
-        isbn = create(:perfect_rails).isbn_13
+        isbn = create(:perfect_rails).isbn13
         user = create(:alice)
         expect(helper).not_to be_registered(isbn, user)
       end
@@ -31,7 +31,7 @@ RSpec.describe BooksHelper, type: :helper do
 
     context '書籍情報が登録されていない場合' do
       it 'falseが返る' do
-        isbn = build(:perfect_rails).isbn_13
+        isbn = build(:perfect_rails).isbn13
         user = create(:alice)
         expect(helper).not_to be_registered(isbn, user)
       end

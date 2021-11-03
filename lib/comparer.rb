@@ -16,9 +16,9 @@ module Comparer
         dmm = DmmCrawler.new
         rakuten = RakutenCrawler.new
         begin
-          amazon.run(book.isbn_13)
+          amazon.run(book.isbn13)
           dmm.run(book.title)
-          rakuten.run(book.isbn_13)
+          rakuten.run(book.isbn13)
         rescue Capybara::ElementNotFound
           logger << "Capybara::ElementNotFound\n"
         end
