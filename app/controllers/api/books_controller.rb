@@ -2,10 +2,10 @@
 
 class API::BooksController < API::BaseController
   def create
-    isbn = params['book']['isbn_13']
+    isbn = params['book']['isbn13']
 
-    if Book.find_by('isbn_13' => isbn).present?
-      book = Book.find_by('isbn_13' => isbn)
+    if Book.find_by(isbn13: isbn).present?
+      book = Book.find_by(isbn13: isbn)
       render status: :ok, json: { bookId: book.id }
       return
     end
@@ -23,6 +23,6 @@ class API::BooksController < API::BaseController
   private
 
   def book_params
-    params.require(:book).permit('isbn_13', :price, :title, :author, :image, :url, :sales_date)
+    params.require(:book).permit(:isbn13, :price, :title, :author, :image, :url, :sales_date)
   end
 end

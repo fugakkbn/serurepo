@@ -116,7 +116,7 @@ export default {
         },
         body: JSON.stringify({
           book: {
-            isbn_13: this.book.isbn,
+            isbn13: this.book.isbn,
             price: this.book.itemPrice,
             title: this.book.title,
             author: this.book.author,

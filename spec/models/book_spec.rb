@@ -13,25 +13,25 @@ RSpec.describe Book, type: :model do
   describe 'ISBN' do
     context '空の場合' do
       it '登録失敗' do
-        book = build(:cherry, 'isbn_13' => '')
+        book = build(:cherry, isbn13: '')
         book.valid?
-        expect(book.errors['isbn_13']).to include('を入力してください')
+        expect(book.errors[:isbn13]).to include('を入力してください')
       end
     end
 
     context '12桁の場合' do
       it '登録失敗' do
-        book = build(:cherry, 'isbn_13' => '978123456789')
+        book = build(:cherry, isbn13: '978123456789')
         book.valid?
-        expect(book.errors['isbn_13']).to include('は13文字で入力してください')
+        expect(book.errors[:isbn13]).to include('は13文字で入力してください')
       end
     end
 
     context '14桁の場合' do
       it '登録失敗' do
-        book = build(:cherry, 'isbn_13' => '97812345678901')
+        book = build(:cherry, isbn13: '97812345678901')
         book.valid?
-        expect(book.errors['isbn_13']).to include('は13文字で入力してください')
+        expect(book.errors[:isbn13]).to include('は13文字で入力してください')
       end
     end
   end

@@ -9,7 +9,7 @@ RSpec.describe 'RakutenCrawler', type: :system do
     let(:book) { build(:perfect_rails) }
 
     it '全ての金額が数値で返ってくること' do
-      crawler.run(book.isbn_13)
+      crawler.run(book.isbn13)
       expect(crawler.single_price).to be_integer
       expect(crawler.e_book_price).to be_integer
       expect(crawler.paper_book_price).to be_integer
