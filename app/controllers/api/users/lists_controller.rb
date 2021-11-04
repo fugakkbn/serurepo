@@ -7,17 +7,16 @@ class API::Users::ListsController < API::BaseController
   end
 
   def create
-    if current_user.list.present?
-      list = current_user.list
-      render status: :ok, json: { listId: list.id }
-      return
-    end
+    list = List.create_with(list_params).find_or_initialize_by(user: current_user)
 
-    list = List.new(list_params)
-    if list.save
-      render status: :created, json: { listId: list.id }
+    if list.new_record?
+      if list.save
+        render status: :created, json: { listId: list.id }
+      else
+        render status: :unprocessable_entity, json: { errorMessage: '登録に失敗しました。' }
+      end
     else
-      render status: :unprocessable_entity, json: { errorMessage: '登録に失敗しました。' }
+      render status: :ok, json: { listId: list.id }
     end
   end
 

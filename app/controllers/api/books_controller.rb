@@ -2,21 +2,18 @@
 
 class API::BooksController < API::BaseController
   def create
-    isbn = params['book']['isbn13']
-    book = Book.find_by(isbn13: isbn)
+    book = Book.create_with(book_params).find_or_initialize_by(isbn13: params['book']['isbn13'])
 
-    if book.present?
-      render status: :ok, json: { bookId: book.id }
-      return
-    end
-
-    new_book = Book.new(book_params)
-    if new_book.save
-      render status: :created,
-             json: { bookId: new_book.id }
+    if book.new_record?
+      if book.save
+        render status: :created,
+               json: { bookId: book.id }
+      else
+        render status: :unprocessable_entity,
+               json: { errorMessage: '登録に失敗しました。' }
+      end
     else
-      render status: :unprocessable_entity,
-             json: { errorMessage: '登録に失敗しました。' }
+      render status: :ok, json: { bookId: book.id }
     end
   end
 
