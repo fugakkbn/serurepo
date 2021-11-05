@@ -1,0 +1,13 @@
+.actions {
+  .button {
+    margin-top: 10px;
+  }
+}
+
+.button {
+  &.max {
+    @include mobile {
+      width: 100%;
+    }
+  }
+}

@@ -12,6 +12,6 @@ section.container.is-max-desktop
             value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
 
     .actions
-      = f.submit t('.resend_confirmation_instructions'), class: 'button is-info'
+      = f.submit t('.resend_confirmation_instructions'), class: 'button max is-info'
 
   = render 'devise/shared/links'

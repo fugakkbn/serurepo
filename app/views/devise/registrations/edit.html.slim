@@ -61,7 +61,7 @@ section.container.is-max-desktop.px-5.py-4
         = f.password_field :current_password, autocomplete: 'current-password', class: 'input'
 
     .actions
-      = f.submit t('.update'), class: 'button is-info'
+      = f.submit t('.update'), class: 'button max is-info'
 
   = link_to 'ログアウト', :destroy_user_session, method: :delete
 
