@@ -1,12 +1,13 @@
-.mt-6
-  - if devise_mapping.omniauthable?
-    - resource_class.omniauth_providers.each do |provider|
-      .level
-        = link_to (image_tag "/#{provider}_sign_in.png"),
-                omniauth_authorize_path(resource_name, provider),
-                method: :post,
-                class: 'level-item block has-text-centered'
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    a.button.max.mt-4 href=omniauth_authorize_path(resource_name, provider)
+      img.icon src='/g-logo.png'
+      - if controller_name == 'registrations'
+        span Googleアカウントで登録
+      - else
+        spen Googleアカウントでログイン
 
+.mt-5
   - if controller_name != 'sessions'
     p.mb-2 = link_to t('.sign_in'), new_session_path(resource_name)
 
