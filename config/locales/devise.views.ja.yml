@@ -113,18 +113,18 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
-        forgot_your_password: パスワードを忘れましたか？
+        forgot_your_password: パスワードを忘れた方はこちら
       signed_in: ログインしました。
       signed_out: ログアウトしました。
     shared:
       links:
         back: 戻る
-        didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか？
+        didn_t_receive_confirmation_instructions: アカウント確認メールを再送する
         didn_t_receive_unlock_instructions: アカウントのロック解除方法のメールを受け取っていませんか？
         forgot_your_password: パスワードを忘れましたか？
-        sign_in: ログイン
+        sign_in: 登録済みの方はこちらからログイン
         sign_in_with_provider: "%{provider}でログイン"
-        sign_up: アカウント登録
+        sign_up: アカウント登録がお済みでない方はこちら
       minimum_password_length: "（%{count}字以上）"
     unlocks:
       new:
