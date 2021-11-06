@@ -7,6 +7,8 @@
 }
 
 .container {
+  max-width: 680px !important;
+
   @include mobile {
     min-width: 90%;
   }
