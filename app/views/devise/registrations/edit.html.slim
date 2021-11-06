@@ -12,7 +12,7 @@ section.container.is-max-desktop.px-5.py-4
       .block
         label.radio
           = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
-          | すべて通知する
+          | 1円でも安ければ通知する
       .block
         label.radio
           = f.radio_button :discount_rating, :over10, class: 'radio', checked: current_user.discount_rating.over10?
