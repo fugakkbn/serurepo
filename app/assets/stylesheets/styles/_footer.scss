@@ -1,14 +1,21 @@
 @charset "utf-8";
 
 .footer {
-  padding: 2.5rem 1.5rem 2.5rem !important;
+  background-color: white;
+  padding: 1.5rem 1rem !important;
   font-size: 14px !important;
 
   &-item {
     list-style: none;
   }
 
-  &-icon:hover {
-    opacity: 0.6;
+  &-icon {
+    .icon {
+      height: 1.75rem;
+      width: 1.75rem;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
