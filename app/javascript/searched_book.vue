@@ -6,9 +6,13 @@
     <div class="media-content float">
       <div class="content">
         <p>
-          <a id="book-title" :href="book['affiliateUrl']">{{
-            book['title']
-          }}</a>
+          <a
+            id="book-title"
+            :href="book['affiliateUrl']"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ book['title'] }}</a
+          >
         </p>
         <p class="is-size-7">
           著者：{{ book['author'] }}<br />
