@@ -1,9 +1,9 @@
 <template>
-  <div class="media">
+  <div class="media float">
     <figure class="media-left">
       <p><img :src="book['mediumImageUrl']" :alt="book['title']" /></p>
     </figure>
-    <div class="media-content">
+    <div class="media-content float">
       <div class="content">
         <p>
           <a id="book-title" :href="book['affiliateUrl']">{{
@@ -21,14 +21,14 @@
           <div class="level-item">
             <button
               v-show="registeredListDetail"
-              class="button is-light"
+              class="button max is-light"
               disabled
             >
               リスト登録済み
             </button>
             <button
               v-show="!registeredListDetail"
-              class="button is-info"
+              class="button max is-info"
               @click="submit"
             >
               セール通知を受け取る
