@@ -69,8 +69,6 @@ section.container.is-max-desktop.px-5.py-4
     .actions
       = f.submit t('.update'), class: 'button max is-info'
 
-  = link_to 'ログアウト', :destroy_user_session, method: :delete
-
   p.has-text-right
     = link_to t('.cancel_my_account'), registration_path(resource_name),
             data: { confirm: t('.are_you_sure') },

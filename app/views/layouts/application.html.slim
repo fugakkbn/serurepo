@@ -44,24 +44,4 @@ html
 
     = yield
 
-    footer.footer
-      ul.block.is-flex.is-justify-content-center
-        li.footer-item
-          = link_to '利用規約', tos_path, class: 'mx-2'
-        li.footer-item
-          = link_to 'プライバシーポリシー', privacy_policy_path, class: 'mx-2'
-
-      ul.block.is-flex.is-justify-content-center
-        li.footer-item
-          = link_to (image_tag '/icons/github.png', class: 'icon is-medium mx-2'),
-                'https://github.com/FUGA0618/serurepo',
-                class: 'footer-icon'
-        li.footer-item
-          = link_to (image_tag '/icons/twitter.png', class: 'icon is-medium mx-2'),
-                'https://twitter.com/fuga__ch',
-                class: 'footer-icon'
-
-      p.has-text-centered
-        | ©
-        = Time.zone.today.year
-        |　ふーが
+    = render 'footer'
