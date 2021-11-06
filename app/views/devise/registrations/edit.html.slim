@@ -67,7 +67,7 @@ section.container.is-max-desktop.px-5.py-4
         = f.password_field :current_password, autocomplete: 'current-password', class: 'input'
 
     .actions
-      = f.submit t('.update'), class: 'button max is-info'
+      = f.submit t('.update'), class: 'button max-mobile quarter-tablet is-info'
 
   p.has-text-right
     = link_to t('.cancel_my_account'), registration_path(resource_name),
