@@ -21,14 +21,14 @@
           <div class="level-item">
             <button
               v-show="registeredListDetail"
-              class="button max is-light"
+              class="button max is-warning"
               disabled
             >
               リスト登録済み
             </button>
             <button
               v-show="!registeredListDetail"
-              class="button max is-info"
+              class="button max is-light"
               @click="submit"
             >
               セール通知を受け取る
