@@ -1,19 +1,5 @@
 @charset "utf-8";
 
-.field {
-  .block {
-    margin-bottom: 0.5rem !important;
-  }
-
-  .message {
-    margin-bottom: 1rem;
-
-    .message-body {
-      padding: 0.5rem 1rem;
-    }
-  }
-}
-
 .columns:not(:last-child) {
   margin-bottom: 0;
 }

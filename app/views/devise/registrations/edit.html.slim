@@ -7,32 +7,32 @@ section.container.is-max-desktop.py-4
     = render 'devise/shared/error_messages', resource: resource
 
     .field
-      .message.is-info
-        = f.label :discount_rating, class: 'label message-body'
-      .block
+      .message.is-info.mb-4
+        = f.label :discount_rating, class: 'label message-body py-2 px-4'
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
           | 1円でも安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over10, class: 'radio', checked: current_user.discount_rating.over10?
           | 10％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over20, class: 'radio', checked: current_user.discount_rating.over20?
           | 20％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over30, class: 'radio', checked: current_user.discount_rating.over30?
           | 30％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
           | 50％以上安ければ通知する
 
     .field
-      .message.is-info
-        .message-body.label
+      .message.is-info.mb-4
+        .message-body.label.py-2.px-4
           | ユーザー情報
 
     .field
