@@ -10,7 +10,7 @@
   max-width: 680px !important;
 
   @include mobile {
-    min-width: 90%;
+    width: 90%;
   }
   @include tablet {
     min-width: 400px;
