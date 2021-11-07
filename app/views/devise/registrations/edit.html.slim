@@ -43,16 +43,13 @@ section.container.is-max-desktop.py-4
         = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
 
     - if current_user.provider.blank?
+      .message.is-warning.mt-5.mb-4
+        .message-body.p-3
+          | パスワードを変更する場合のみ以下を入力してください。パスワード変更以外の場合は入力の必要はありません。
+
       .field
         = f.label :password, class: 'label'
-        i
-          | (
-          = t('.leave_blank_if_you_don_t_want_to_change_it')
-          | )
         = f.password_field :password, autocomplete: 'new-password', class: 'input'
-      - if @minimum_password_length
-        em
-          = t('devise.shared.minimum_password_length', count: @minimum_password_length)
 
       .field
         = f.label :password_confirmation, class: 'label'
@@ -60,10 +57,6 @@ section.container.is-max-desktop.py-4
 
       .field
         = f.label :current_password, class: 'label'
-        i
-          | (
-          = t('.we_need_your_current_password_to_confirm_your_changes')
-          | )
         = f.password_field :current_password, autocomplete: 'current-password', class: 'input'
 
     .actions
