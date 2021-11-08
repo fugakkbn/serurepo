@@ -7,17 +7,15 @@ class DmmCrawler < Crawler
 
   def initialize
     super
-    @url = 'https://book.dmm.com/'
+    @url = 'https://book.dmm.com/search/?service=ebook&searchstr='
     @price = ''
     @book_url = ''
   end
 
   def run(book_title)
+    url = @url + book_title
     data = []
-    start_scraping @url do
-      fill_in id: 'naviapi-search-text', with: book_title
-      find('#naviapi-search-submit').click
-
+    start_scraping url do
       next unless all('p', text: '一致する商品は見つかりませんでした。').size.zero?
 
       find('#fn-list').first('a').click
