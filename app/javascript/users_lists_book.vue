@@ -15,7 +15,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <a :href="book.url">{{ book.title }}</a>
+          <a :href="book.url" target="_blank" rel="noopener noreferrer">{{
+            book.title
+          }}</a>
         </p>
         <p class="is-size-7">
           著者:{{ book.author }}<br />

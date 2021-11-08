@@ -1,0 +1,26 @@
+@include tablet {
+  .media-content.float {
+    position: relative;
+    padding-right: 200px;
+
+    .level {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
+@include mobile {
+  .media.float {
+    position: relative;
+    padding-bottom: 50px;
+
+    .level {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}

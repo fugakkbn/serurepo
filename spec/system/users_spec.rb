@@ -9,7 +9,8 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_css 'input#user_email'
       expect(page).to have_css 'input#user_password'
       expect(page).to have_css 'input#user_password_confirmation'
-      expect(page).to have_selector "img[src$='google_oauth2_sign_in.png']"
+      expect(page).to have_selector "img[src$='g-logo.png']"
+      expect(page).to have_content 'Googleアカウントで登録'
     end
 
     context '全てのフォームが入力されている場合' do
@@ -106,7 +107,8 @@ RSpec.describe 'Users', type: :system do
       visit new_user_session_path
       expect(page).to have_css 'input#user_email'
       expect(page).to have_css 'input#user_password'
-      expect(page).to have_selector "img[src$='google_oauth2_sign_in.png']"
+      expect(page).to have_selector "img[src$='g-logo.png']"
+      expect(page).to have_content 'Googleアカウントでログイン'
     end
 
     context '全てのフォームが入力されている場合' do
@@ -181,9 +183,9 @@ RSpec.describe 'Users', type: :system do
 
     it 'Eメール入力フォームとボタンが表示されていること' do
       visit new_user_password_path
-      expect(page).to have_content 'パスワードを忘れましたか？'
+      expect(page).to have_content 'パスワード再設定'
       expect(page).to have_css 'input#user_email'
-      expect(page).to have_button 'パスワードの再設定方法を送信する'
+      expect(page).to have_button 'パスワード再設定方法を送信'
     end
 
     context '正しいメールアドレスの場合' do
@@ -193,7 +195,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'Eメール', with: user.email
 
         # メールが送信されていることを確認
-        expect { click_button 'パスワードの再設定方法を送信する' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+        expect { click_button 'パスワード再設定方法を送信' }.to change { ActionMailer::Base.deliveries.size }.by(1)
         expect(page).to have_content 'パスワードの再設定について数分以内にメールでご連絡いたします。'
 
         url = generate_reset_password_url
@@ -227,7 +229,7 @@ RSpec.describe 'Users', type: :system do
       it '「Eメールは見つかりませんでした。」と表示されること' do
         visit new_user_password_path
         fill_in 'Eメール', with: 'test@example.com'
-        expect { click_button 'パスワードの再設定方法を送信する' }.not_to(change { ActionMailer::Base.deliveries.size })
+        expect { click_button 'パスワード再設定方法を送信' }.not_to(change { ActionMailer::Base.deliveries.size })
         expect(page).to have_content 'Eメールは見つかりませんでした。'
       end
     end
@@ -238,7 +240,7 @@ RSpec.describe 'Users', type: :system do
           user = create(:alice)
           visit new_user_password_path
           fill_in 'Eメール', with: user.email
-          click_button 'パスワードの再設定方法を送信する'
+          click_button 'パスワード再設定方法を送信'
 
           visit edit_user_password_path
           expect(page).to have_content 'このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。'
@@ -250,7 +252,7 @@ RSpec.describe 'Users', type: :system do
           user = create(:alice)
           visit new_user_password_path
           fill_in 'Eメール', with: user.email
-          click_button 'パスワードの再設定方法を送信する'
+          click_button 'パスワード再設定方法を送信'
 
           url = generate_reset_password_url
           visit url

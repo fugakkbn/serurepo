@@ -1,5 +1,5 @@
 - provide(:title, t('.title', resource: resource.model_name.human))
-section.container.is-max-desktop.px-5.py-4
+section.container.is-max-desktop.py-4
   h1.title.is-4.has-text-centered
     = yield(:title)
 
@@ -7,27 +7,33 @@ section.container.is-max-desktop.px-5.py-4
     = render 'devise/shared/error_messages', resource: resource
 
     .field
-      = f.label :discount_rating, class: 'label'
-      .block
+      .message.is-info.mb-4
+        = f.label :discount_rating, class: 'label message-body py-2 px-4'
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :even, class: 'radio', checked: current_user.discount_rating.even?
-          | すべて通知する
-      .block
+          | 1円でも安ければ通知する
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over10, class: 'radio', checked: current_user.discount_rating.over10?
           | 10％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over20, class: 'radio', checked: current_user.discount_rating.over20?
           | 20％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over30, class: 'radio', checked: current_user.discount_rating.over30?
           | 30％以上安ければ通知する
-      .block
+      .block.mb-2
         label.radio
           = f.radio_button :discount_rating, :over50, class: 'radio', checked: current_user.discount_rating.over50?
           | 50％以上安ければ通知する
+
+    .field
+      .message.is-info.mb-4
+        .message-body.label.py-2.px-4
+          | ユーザー情報
 
     .field
       = f.label :email, class: 'label'
@@ -37,16 +43,13 @@ section.container.is-max-desktop.px-5.py-4
         = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
 
     - if current_user.provider.blank?
+      .message.is-warning.mt-5.mb-4
+        .message-body.p-3
+          | パスワードを変更する場合のみ以下を入力してください。パスワード変更以外の場合は入力の必要はありません。
+
       .field
         = f.label :password, class: 'label'
-        i
-          | (
-          = t('.leave_blank_if_you_don_t_want_to_change_it')
-          | )
         = f.password_field :password, autocomplete: 'new-password', class: 'input'
-      - if @minimum_password_length
-        em
-          = t('devise.shared.minimum_password_length', count: @minimum_password_length)
 
       .field
         = f.label :password_confirmation, class: 'label'
@@ -54,19 +57,13 @@ section.container.is-max-desktop.px-5.py-4
 
       .field
         = f.label :current_password, class: 'label'
-        i
-          | (
-          = t('.we_need_your_current_password_to_confirm_your_changes')
-          | )
         = f.password_field :current_password, autocomplete: 'current-password', class: 'input'
 
     .actions
-      = f.submit t('.update'), class: 'button is-info'
+      = f.submit t('.update'), class: 'button max-mobile quarter-tablet is-info'
 
-  = link_to 'ログアウト', :destroy_user_session, method: :delete
-
-  h3.title.is-5.has-text-centered.mt-5
-    = t('.cancel_my_account')
-
-  p
-    = link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
+  p.has-text-right
+    = link_to t('.cancel_my_account'), registration_path(resource_name),
+            data: { confirm: t('.are_you_sure') },
+            method: :delete,
+            class: 'has-text-grey-light is-size-7'

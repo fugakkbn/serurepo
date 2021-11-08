@@ -1,0 +1,15 @@
+.button {
+  &.max {
+    width: 100%;
+  }
+  &.max-mobile {
+    @include mobile {
+      width: 100%;
+    }
+  }
+  &.quarter-tablet {
+    @include tablet {
+      width: 25%;
+    }
+  }
+}

@@ -1,20 +1,21 @@
-.mt-6
-  - if devise_mapping.omniauthable?
-    - resource_class.omniauth_providers.each do |provider|
-      .level
-        = link_to (image_tag "/#{provider}_sign_in.png"),
-                omniauth_authorize_path(resource_name, provider),
-                method: :post,
-                class: 'level-item block has-text-centered'
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    = link_to omniauth_authorize_path(resource_name, provider), method: :post, class: 'button max mt-4'
+      img.icon src='/g-logo.png'
+      - if controller_name == 'registrations'
+        span Googleアカウントで登録
+      - else
+        spen Googleアカウントでログイン
 
+.mt-5
   - if controller_name != 'sessions'
-    p = link_to t('.sign_in'), new_session_path(resource_name)
+    p.mb-2 = link_to t('.sign_in'), new_session_path(resource_name)
 
   - if devise_mapping.registerable? && controller_name != 'registrations'
-    p = link_to t('.sign_up'), new_registration_path(resource_name)
+    p.mb-2 = link_to t('.sign_up'), new_registration_path(resource_name)
 
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
-    p = link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name)
+    p.mb-2 = link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name)
 
   - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-    p = link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name)
+    p.mb-2 = link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name)

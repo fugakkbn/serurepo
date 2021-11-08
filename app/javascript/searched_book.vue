@@ -1,14 +1,18 @@
 <template>
-  <div class="media">
+  <div class="media float">
     <figure class="media-left">
       <p><img :src="book['mediumImageUrl']" :alt="book['title']" /></p>
     </figure>
-    <div class="media-content">
+    <div class="media-content float">
       <div class="content">
         <p>
-          <a id="book-title" :href="book['affiliateUrl']">{{
-            book['title']
-          }}</a>
+          <a
+            id="book-title"
+            :href="book['affiliateUrl']"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ book['title'] }}</a
+          >
         </p>
         <p class="is-size-7">
           著者：{{ book['author'] }}<br />
@@ -21,14 +25,14 @@
           <div class="level-item">
             <button
               v-show="registeredListDetail"
-              class="button is-light"
+              class="button max is-warning"
               disabled
             >
               リスト登録済み
             </button>
             <button
               v-show="!registeredListDetail"
-              class="button is-info"
+              class="button max is-light"
               @click="submit"
             >
               セール通知を受け取る
