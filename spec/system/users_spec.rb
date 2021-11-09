@@ -257,7 +257,7 @@ RSpec.describe 'Users', type: :system do
           url = generate_reset_password_url
           visit url
 
-          travel_to 1.days.from_now do
+          travel_to 1.day.from_now do
             fill_in '新しいパスワード', with: 'testtest'
             fill_in '確認用新しいパスワード', with: 'testtest'
             click_button 'パスワードを変更する'
