@@ -179,7 +179,6 @@ export default {
         })
         .then((json) => {
           if (json.listDetailId) {
-            console.log(json)
             this.registeredListDetail = true
           }
         })

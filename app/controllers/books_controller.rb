@@ -7,12 +7,7 @@ class BooksController < ApplicationController
       @page_num = (params[:page] || 1).to_i
       count_per_page = 20
 
-      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&hits=#{count_per_page}&affiliateId=#{Rails.application.credentials.rakuten[:af_id]}&applicationId=#{Rails.application.credentials.rakuten[:app_id]}&page=#{@page_num}"
-      url += /^978[0-9]{10}/.match?(@query) ? "&isbn=#{@query}" : "&title=#{@query}"
-
-      client = HTTPClient.new
-      request = client.get(url)
-      response = JSON.parse(request.body)
+      response = RakutenBooksSearcher.new(@query, @page_num, count_per_page).run
 
       @max_page_num = response['pageCount']
       @total_num = response['count']
