@@ -2,8 +2,8 @@
 
 class API::Users::ListsController < API::BaseController
   def show
-    @list_id = params[:id]
-    @list_details = ListDetail.where(list_id: @list_id)
+    list_id = params[:id]
+    @list_details = ListDetail.where(list_id: list_id)
   end
 
   def create
