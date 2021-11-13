@@ -1,6 +1,7 @@
 [![Deploy with Capistrano](https://github.com/FUGA0618/serurepo/actions/workflows/deploy_with_capistrano.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/deploy_with_capistrano.yml)
 [![Lint](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/lint.yml)
 [![test](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml/badge.svg)](https://github.com/FUGA0618/serurepo/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/FUGA0618/serurepo/branch/main/graph/badge.svg?token=XPH2NIQQGP)](https://codecov.io/gh/FUGA0618/serurepo)
 
 ![ロゴ_横長](https://user-images.githubusercontent.com/58870882/139534536-65598064-7be0-4a2b-975a-3a722f1a8f8a.png)
 
