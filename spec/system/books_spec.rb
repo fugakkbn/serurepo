@@ -46,5 +46,26 @@ RSpec.describe 'books', type: :system do
         expect(page).to have_content '検索ワードを入力してください。'
       end
     end
+
+    context '100ページより多いページ数が指定された場合' do
+      it 'パラメーターが不正です。と表示される' do
+        visit_with_auth '/books?page=101&query=ruby', :alice
+        expect(page).to have_content 'パラメーターが不正です。'
+      end
+    end
+
+    context 'ページ数に負の数値が指定された場合' do
+      it 'パラメーターが不正です。と表示される' do
+        visit_with_auth '/books?page=-1&query=ruby', :alice
+        expect(page).to have_content 'パラメーターが不正です。'
+      end
+    end
+
+    context 'ページ数に数値以外が指定された場合' do
+      it 'パラメーターが不正です。と表示される' do
+        visit_with_auth '/books?page=aaa&query=ruby', :alice
+        expect(page).to have_content 'パラメーターが不正です。'
+      end
+    end
   end
 end
