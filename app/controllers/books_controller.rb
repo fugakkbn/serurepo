@@ -5,6 +5,10 @@ class BooksController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @page_num = (params[:page] || 1).to_i
+
+      # APIの仕様上ページ指定は100が上限
+      return redirect_to root_path, alert: 'パラメーターが不正です。' if @page_num.zero? || @page_num.negative? || @page_num > 100
+
       count_per_page = 20
 
       response = RakutenBooksSearcher.new(@query, @page_num, count_per_page).run
@@ -14,8 +18,6 @@ class BooksController < ApplicationController
       @first_num = response['first']
       @last_num = response['last']
       @items = response['Items']
-
-      render :index
     else
       redirect_to root_path, alert: '検索ワードを入力してください。'
     end

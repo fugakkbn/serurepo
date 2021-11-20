@@ -9,7 +9,7 @@ class RakutenBooksSearcher
       affiliateId: Rails.application.credentials.rakuten[:af_id],
       applicationId: Rails.application.credentials.rakuten[:app_id],
       page: page_num,
-      (/^978[0-9]{10}/.match?(query) ? :isbn : :title) => query
+      (/^978[0-9]{10}$/.match?(query) ? :isbn : :title) => query
     }.to_query
     @url = uri.to_s
   end
