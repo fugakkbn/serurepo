@@ -67,5 +67,23 @@ RSpec.describe 'books', type: :system do
         expect(page).to have_content 'パラメーターが不正です。'
       end
     end
+
+    context 'ISBNが1桁多い場合' do
+      it '該当する書籍がありませんでした。と表示される' do
+        visit_with_auth root_path, :alice
+        fill_in '検索ワード or ISBN', with: '97847741939771'
+        click_button '検索する'
+        expect(page).to have_content '該当する書籍がありませんでした。'
+      end
+    end
+
+    context 'ISBNが1桁少ない場合' do
+      it '該当する書籍がありませんでした。と表示される' do
+        visit_with_auth root_path, :alice
+        fill_in '検索ワード or ISBN', with: '978477419397'
+        click_button '検索する'
+        expect(page).to have_content '該当する書籍がありませんでした。'
+      end
+    end
   end
 end
