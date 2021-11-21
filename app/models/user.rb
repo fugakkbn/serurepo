@@ -10,9 +10,10 @@ class User < ApplicationRecord
 
   has_one :list, dependent: :destroy
 
-  validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
-
   flag :discount_rating, %i[even over10 over20 over30 over50]
+
+  validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
+  validates :discount_rating, numericality: { only_integer: true, other_than: 0, message: 'は無効な値です。' }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

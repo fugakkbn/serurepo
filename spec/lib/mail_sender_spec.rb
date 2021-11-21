@@ -90,6 +90,14 @@ RSpec.describe MailSender, type: :module do
         expect(described_class.get_rating(user)).to eq 0.5
       end
     end
+
+    context '規定外の数値の場合' do
+      it '1が返ること' do
+        user = create(:rating_even)
+        user.discount_rating = ''
+        expect(described_class.get_rating(user)).to eq 1
+      end
+    end
   end
 
   describe '#higher_than_discounted_price?' do
