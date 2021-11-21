@@ -40,13 +40,28 @@ RSpec.describe User, type: :model do
   describe 'discount_rating' do
     context '空の場合' do
       it '登録成功' do
-        user = build(:alice, discount_rating: '')
+        user = build(:alice)
         expect(user).to be_valid
       end
 
       it '1に設定される' do
         user = create(:alice)
         expect(user.discount_rating.raw).to eq 1
+      end
+    end
+
+    context '存在しない値で更新した場合' do
+      it '登録失敗' do
+        user = create(:alice)
+        user.update(discount_rating: :over100)
+        expect(user).not_to be_valid
+      end
+
+      it 'エラーメッセージが表示される' do
+        user = create(:alice)
+        user.update(discount_rating: :over100)
+        user.valid?
+        expect(user.errors['discount_rating']).to include('は無効な値です。')
       end
     end
   end
