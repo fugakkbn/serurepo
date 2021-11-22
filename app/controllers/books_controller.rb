@@ -7,7 +7,7 @@ class BooksController < ApplicationController
       @page_num = (params[:page] || 1).to_i
 
       # APIの仕様上ページ指定は100が上限
-      return redirect_to root_path, alert: 'パラメーターが不正です。' if @page_num.zero? || @page_num.negative? || @page_num > 100
+      return redirect_to root_path, alert: 'パラメーターが不正です。' unless @page_num.between?(1, 100)
 
       count_per_page = 20
 

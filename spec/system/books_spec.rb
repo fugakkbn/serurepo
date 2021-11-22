@@ -47,6 +47,13 @@ RSpec.describe 'books', type: :system do
       end
     end
 
+    context 'ページ数に0が指定された場合' do
+      it 'パラメーターが不正です。と表示される' do
+        visit_with_auth '/books?page=0&query=ruby', :alice
+        expect(page).to have_content 'パラメーターが不正です。'
+      end
+    end
+
     context '100ページより多いページ数が指定された場合' do
       it 'パラメーターが不正です。と表示される' do
         visit_with_auth '/books?page=101&query=ruby', :alice
