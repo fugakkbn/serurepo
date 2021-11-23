@@ -26,10 +26,10 @@ RSpec.describe 'Api::ListDetails::Id', type: :request do
       end
 
       context '登録済みでない場合' do
-        it '422が返ること' do
+        it '200が返ること' do
           sign_in user
           get api_list_details_id_index_path({ isbn: other_book.isbn13 })
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:ok)
         end
 
         it 'リスト詳細IDはnilであること' do
