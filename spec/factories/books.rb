@@ -50,4 +50,14 @@ FactoryBot.define do
     isbn13 { '9784839962227' }
     price { 3828 }
   end
+
+  factory :dokugaku, class: 'Book' do
+    title { '独学大全' }
+    author { '読書猿' }
+    image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8536/9784478108536.jpg?_ex=120x120' }
+    url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15628625%2F' }
+    sales_date { '2018年10月19日頃' }
+    isbn13 { '9784478108536' }
+    price { 3080 }
+  end
 end
