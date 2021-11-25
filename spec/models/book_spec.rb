@@ -66,10 +66,9 @@ RSpec.describe Book, type: :model do
 
   describe 'author' do
     context '空の場合' do
-      it '登録失敗' do
+      it '登録成功' do
         book = build(:cherry, author: '')
-        book.valid?
-        expect(book.errors[:author]).to include('を入力してください')
+        expect(book).to be_valid
       end
     end
   end
@@ -96,10 +95,9 @@ RSpec.describe Book, type: :model do
 
   describe 'sales_date' do
     context '空の場合' do
-      it '登録失敗' do
+      it '登録成功' do
         book = build(:cherry, sales_date: '')
-        book.valid?
-        expect(book.errors[:sales_date]).to include('を入力してください')
+        expect(book).to be_valid
       end
     end
   end
