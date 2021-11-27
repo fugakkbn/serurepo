@@ -29,7 +29,8 @@ class AmazonCrawler < Crawler
       kindle_price = ver_list_dom[0].text.split("\n")[1].delete('￥,').to_i
       data << kindle_price
 
-      paper_price = ver_list_dom[1].text.split("\n")[1].delete('￥,').to_i
+      paper_price_index = ver_list_dom.size >= 3 ? 2 : 1
+      paper_price = ver_list_dom[paper_price_index].text.split("\n")[1].delete('￥,').to_i
       data << paper_price
 
       ver_list_dom[0].click
