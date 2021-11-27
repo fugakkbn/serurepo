@@ -25,7 +25,6 @@ class AmazonCrawler < Crawler
       switch_to_window(windows.last)
 
       ver_list_dom = all('.a-unordered-list.a-nostyle.a-button-list.a-horizontal li')
-      puts ver_list_dom[-1].text
 
       kindle_price = ver_list_dom[0].text.split("\n")[1].delete('￥,').to_i
       data << kindle_price
@@ -38,8 +37,9 @@ class AmazonCrawler < Crawler
       split_url = current_url.split('/')
       before_target_index = split_url.index('dp')
       data << split_url[before_target_index.next]
-      puts data
     end
-    @kindle_price, @paper_price, @asin = data
+    @kindle_price = data[0]
+    @paper_price = data[1]
+    @asin = data[2]
   end
 end
