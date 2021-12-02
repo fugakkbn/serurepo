@@ -224,6 +224,94 @@ RSpec.describe Comparer, type: :module do
     end
   end
 
+  describe '#seshop_comparer' do
+    let(:book) { create(:perfect_rails) }
+    let(:seshop) { SeshopCrawler.new }
+
+    context '2種類ある場合' do
+      context '両方安い場合' do
+        it '最も安い価格が返ること' do
+          seshop.instance_variable_set(:@paper_price, 3000)
+          seshop.instance_variable_set(:@pdf_price, 2000)
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result[:price]).to eq 2000
+        end
+      end
+
+      context '片方が安くて片方が高い場合' do
+        it '安い方の価格が返ること' do
+          seshop.instance_variable_set(:@paper_price, 2000)
+          seshop.instance_variable_set(:@pdf_price, 4000)
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result[:price]).to eq 2000
+        end
+      end
+
+      context '片方が安くて片方がDBと同じ場合' do
+        it '安い方の価格が返ること' do
+          seshop.instance_variable_set(:@paper_price, 2000)
+          seshop.instance_variable_set(:@pdf_price, 3828)
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result[:price]).to eq 2000
+        end
+      end
+
+      context '両方DBと同じ場合' do
+        it 'nilが返ること' do
+          seshop.instance_variable_set(:@paper_price, 3828)
+          seshop.instance_variable_set(:@pdf_price, 3828)
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result).to be_nil
+        end
+      end
+
+      context '両方DBより高い場合' do
+        it 'nilが返ること' do
+          seshop.instance_variable_set(:@paper_price, 4000)
+          seshop.instance_variable_set(:@pdf_price, 4000)
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result).to be_nil
+        end
+      end
+    end
+
+    context '1種類の場合' do
+      context 'DBより安い場合' do
+        it '価格が返ること' do
+          seshop.instance_variable_set(:@paper_price, 3000)
+          seshop.instance_variable_set(:@pdf_price, '')
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result[:price]).to eq 3000
+        end
+      end
+
+      context 'DBと同じ場合' do
+        it 'nilが返ること' do
+          seshop.instance_variable_set(:@paper_price, 3828)
+          seshop.instance_variable_set(:@pdf_price, '')
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result).to be_nil
+        end
+      end
+
+      context 'DBより高い場合' do
+        it 'nilが返ること' do
+          seshop.instance_variable_set(:@paper_price, 4000)
+          seshop.instance_variable_set(:@pdf_price, '')
+          result = Comparer::Books.seshop_comparer(seshop, book)
+          expect(result).to be_nil
+        end
+      end
+    end
+
+    context 'SEshopにない書籍の場合' do
+      it 'nilが返ること' do
+        result = Comparer::Books.seshop_comparer(seshop, book)
+        expect(result).to be_nil
+      end
+    end
+  end
+
   describe '#compare_price' do
     let(:e_book_price) { 2500 }
     let(:paper_book_price) { 2500 }
