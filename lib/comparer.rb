@@ -3,22 +3,26 @@
 require 'crawler/amazon_crawler'
 require 'crawler/dmm_crawler'
 require 'crawler/rakuten_crawler'
+require 'crawler/seshop_crawler'
 require 'logger'
 
 module Comparer
   class Books
-    def self.run
+    def self.run # rubocop:disable Metrics/MethodLength
       logger = Logger.new('log/crawler.log')
+      logger << "==#{Time.current} start==================\n"
 
       data = []
       Book.find_each do |book|
         amazon = AmazonCrawler.new
         dmm = DmmCrawler.new
         rakuten = RakutenCrawler.new
+        seshop = SeshopCrawler.new
         begin
           amazon.run(book.isbn13)
           dmm.run(book.title)
           rakuten.run(book.isbn13)
+          seshop.run(book.isbn13)
         rescue Capybara::ElementNotFound
           logger << "Capybara::ElementNotFound\n"
         end
@@ -26,7 +30,8 @@ module Comparer
         data.push({ book_id: book.id,
                     amazon: amazon_comparer(amazon, book),
                     dmm: dmm_comparer(dmm, book),
-                    rakuten: rakuten_comparer(rakuten, book) })
+                    rakuten: rakuten_comparer(rakuten, book),
+                    seshop: seshop_comparer(seshop, book) })
       end
       logger << data
       data
@@ -73,6 +78,23 @@ module Comparer
       return if price >= book.price
 
       { price: price, url: book.url }
+    end
+
+    def self.seshop_comparer(seshop_data, book)
+      return if seshop_data.paper_price.blank? && seshop_data.pdf_price.blank?
+
+      seshop_price = seshop_data.paper_price.to_i
+      seshop_url = seshop_data.paper_url
+
+      pdf_price = seshop_data.pdf_price.to_i
+      if !pdf_price.zero? && pdf_price < seshop_price
+        seshop_price = pdf_price
+        seshop_url = seshop_data.pdf_url
+      end
+
+      return if book.price <= seshop_price
+
+      { price: seshop_price, url: seshop_url }
     end
 
     def self.compare_price(e_book_price, paper_price)
