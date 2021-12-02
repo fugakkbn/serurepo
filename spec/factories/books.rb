@@ -60,4 +60,24 @@ FactoryBot.define do
     isbn13 { '9784478108536' }
     price { 3080 }
   end
+
+  factory :dokusyu_js, class: 'Book' do
+    title { '独習JavaScript 新版' }
+    author { 'CodeMafia 外村将大' }
+    image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8536/9784478108536.jpg?_ex=120x120' }
+    url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15628625%2F' }
+    sales_date { '2021年11月15日' }
+    isbn13 { '9784798160276' }
+    price { 3278 }
+  end
+
+  factory :kumikomi_os, class: 'Book' do
+    title { 'リアルタイム組込みOS基礎講座' }
+    author { 'Carolone Yao' }
+    image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8536/9784478108536.jpg?_ex=120x120' }
+    url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15628625%2F' }
+    sales_date { '2005年11月02日' }
+    isbn13 { '4798110043' }
+    price { 3740 }
+  end
 end
