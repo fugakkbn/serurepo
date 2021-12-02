@@ -17,6 +17,8 @@ class SeshopCrawler < Crawler
     url = @search_url + isbn
     data = []
     start_scraping url do
+      return data << SeshopCrawler.calc_price_and_get_url(self) unless find('.row.list')
+
       within '.row.list' do
         first('figure').click
       end
@@ -27,9 +29,8 @@ class SeshopCrawler < Crawler
         all('figure').last.click
       end
       data << SeshopCrawler.calc_price_and_get_url(self)
-
-      data.flatten!
     end
+    data.flatten!
     @paper_price, @paper_url, @pdf_price, @pdf_url = data
   end
 
