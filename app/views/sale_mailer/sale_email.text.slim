@@ -38,6 +38,13 @@ br
   br
   = @sale_data[:rakuten][:url]
   br
+- if @sale_data[:seshop].present?
+  | 【SEshop】
+  br
+  = format_price(@sale_data[:seshop][:price])
+  br
+  = @sale_data[:seshop][:url]
+  br
 
 br
 

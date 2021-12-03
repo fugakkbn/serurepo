@@ -34,6 +34,11 @@
           = link_to "楽天ブックス #{format_price(@sale_data[:rakuten][:price])}",
                   @sale_data[:rakuten][:url],
                   class: 'button is-primary', style: 'width: 300px;'
+      - if @sale_data[:seshop].present?
+        p.block
+          = link_to "SEshop #{format_price(@sale_data[:seshop][:price])}",
+                  @sale_data[:seshop][:url],
+                  class: 'button is-success', style: 'width: 300px;'
 
   p.block
     | 書籍を購入したら、
