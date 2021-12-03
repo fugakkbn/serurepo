@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :cherry, class: 'Book' do
-    title { 'プロを目指す人のためのRuby入門' }
-    author { '伊藤淳一（プログラミング）' }
-    image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3977/9784774193977.jpg?_ex=120x120' }
-    url { 'https://hb.afl.rakuten.co.jp/hgc/g00q0727.m0lf90b6.g00q0727.m0lfa419/?pc=https%3A%2F%2Fbooks.rakuten.co.jp%2Frb%2F15209044%2F' }
+    title { 'プロを目指す人のためのRuby入門［改訂2版］　言語仕様からテスト駆動開発・デバッグ技法まで' }
+    author { '伊藤 淳一' }
+    image { 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4373/9784297124373_1_5.jpg?_ex=120x120' }
+    url { 'https://books.rakuten.co.jp/rb/16908719/' }
     sales_date { '2017年12月' }
-    isbn13 { '9784774193977' }
+    isbn13 { '9784297124373' }
     price { 3278 }
   end
 
