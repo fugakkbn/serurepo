@@ -14,9 +14,9 @@ RSpec.describe 'books', type: :system do
     context 'ISBNで検索した場合' do
       it 'プロを目指す人のためのRuby入門が表示される' do
         visit_with_auth root_path, :alice
-        fill_in '検索ワード or ISBN', with: '9784774193977'
+        fill_in '検索ワード or ISBN', with: '9784297124373'
         click_button '検索する'
-        expect(page).to have_selector '#book-title', text: 'プロを目指す人のためのRuby入門'
+        expect(page).to have_selector '#book-title', text: 'プロを目指す人のためのRuby入門［改訂2版］　言語仕様からテスト駆動開発・デバッグ技法まで'
       end
     end
 

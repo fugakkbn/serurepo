@@ -7,7 +7,7 @@ RSpec.describe 'users/lists', type: :system do
     context 'ログイン状態で通知を受け取るボタンを押した場合' do
       it '登録に成功してボタンが非活性になっている' do
         visit_with_auth root_path, :alice
-        fill_in '検索ワード or ISBN', with: '9784774193977'
+        fill_in '検索ワード or ISBN', with: '9784297124373'
         click_button '検索する'
         accept_alert do
           click_button 'セール通知を受け取る'

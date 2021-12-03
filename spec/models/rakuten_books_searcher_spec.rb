@@ -36,15 +36,15 @@ RSpec.describe RakutenBooksSearcher, type: :model do
   describe '#run' do
     context '正しいISBNの場合' do
       it 'プロを目指す人のためのRuby入門の結果が返ること' do
-        searcher = described_class.new('9784774193977', 1, 20).run
-        expect(searcher['Items'][0]['Item']['title']).to eq 'プロを目指す人のためのRuby入門'
+        searcher = described_class.new('9784297124373', 1, 20).run
+        expect(searcher['Items'][0]['Item']['title']).to eq 'プロを目指す人のためのRuby入門［改訂2版］　言語仕様からテスト駆動開発・デバッグ技法まで'
       end
     end
 
     context '正しいタイトルの場合' do
       it 'プロを目指す人のためのRuby入門の結果が返ること' do
         searcher = described_class.new('プロを目指す人のためのRuby入門', 1, 20).run
-        expect(searcher['Items'][0]['Item']['title']).to eq 'プロを目指す人のためのRuby入門'
+        expect(searcher['Items'][0]['Item']['title']).to eq 'プロを目指す人のためのRuby入門［改訂2版］　言語仕様からテスト駆動開発・デバッグ技法まで'
       end
     end
 
