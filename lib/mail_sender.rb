@@ -11,9 +11,11 @@ class MailSender
         discount_rating = get_rating(user)
         discounted_price = (book.price * discount_rating).truncate
 
-        data[:amazon] = nil if higher_than_discounted_price?(data[:amazon], discounted_price)
-        data[:dmm] = nil if higher_than_discounted_price?(data[:dmm], discounted_price)
-        data[:rakuten] = nil if higher_than_discounted_price?(data[:rakuten], discounted_price)
+        data.each do |shop, detail|
+          next if shop == :book_id
+
+          data[shop] = nil if higher_than_discounted_price?(detail, discounted_price)
+        end
         next if all_data_nil?(data)
 
         SaleMailer.with(user: user, sale_data: data).sale_email.deliver_now
@@ -22,11 +24,7 @@ class MailSender
   end
 
   def self.all_data_nil?(data)
-    if data[:amazon].nil? && data[:dmm].nil? && data[:rakuten].nil?
-      true
-    else
-      false
-    end
+    data[:amazon].nil? && data[:dmm].nil? && data[:rakuten].nil? && data[:seshop].nil?
   end
 
   def self.get_rating(user)
@@ -47,10 +45,6 @@ class MailSender
   end
 
   def self.higher_than_discounted_price?(price_data, discounted_price)
-    if price_data.present? && (price_data[:price] >= discounted_price)
-      true
-    else
-      false
-    end
+    price_data.present? && (price_data[:price] >= discounted_price)
   end
 end
