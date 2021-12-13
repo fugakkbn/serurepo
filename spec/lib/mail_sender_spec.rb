@@ -17,6 +17,10 @@ RSpec.describe MailSender, type: :module do
       rakuten: {
         price: 3000,
         url: 'https://books.rakuten.com'
+      },
+      seshop: {
+        price: 3000,
+        url: 'https://seshop.com'
       }
     }
   end
@@ -50,6 +54,7 @@ RSpec.describe MailSender, type: :module do
         price_data[:amazon] = nil
         price_data[:dmm] = nil
         price_data[:rakuten] = nil
+        price_data[:seshop] = nil
         expect(described_class).to be_all_data_nil(price_data)
       end
     end
