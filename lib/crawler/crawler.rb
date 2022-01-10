@@ -7,11 +7,12 @@ require 'selenium-webdriver'
 
 Capybara.register_driver :selenium do |app|
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions' => { args: %w[headless disable-gpu window-size=1280,800] }
+    'goog:chromeOptions' => { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage window-size=1280,800] }
   )
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
-                                 capabilities: caps)
+                                 capabilities: caps,
+                                 timeout: 600)
 end
 Capybara.javascript_driver = :selenium
 Capybara.default_driver = :selenium
@@ -21,8 +22,8 @@ class Crawler
     Capybara::Session.new(:selenium).tap do |session|
       session.visit url
       session.instance_eval(&block)
-    rescue StandardError => e
-      Rails.logger.debug "scraping_error: #{session} #{e}"
+    rescue EOFError, Net::ReadTimeout => e
+      Rails.logger.error "scraping_error: #{session.inspect} #{e.message}"
     ensure
       session.quit
     end
