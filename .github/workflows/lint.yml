@@ -24,7 +24,7 @@ jobs:
 
     - name: Slim Lint
       run: docker-compose run web bundle exec slim-lint app/views
-
+      
     - name: ESLint
       run: docker-compose run web bin/yarn eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0
       

@@ -17,18 +17,18 @@ class SeshopCrawler < Crawler
     url = @search_url + isbn
     data = []
     start_scraping url do
-      return data << SeshopCrawler.calc_price_and_get_url(self) unless find('.row.list')
+      return data << nil if find('.row.list').text == '該当の商品はありません。'
 
-      within '.row.list' do
-        first('figure').click
-      end
-      data << SeshopCrawler.calc_price_and_get_url(self)
+      if find('h1').text.include?('検索結果一覧')
+        within('.row.list') { first('figure').click }
+        data << SeshopCrawler.calc_price_and_get_url(self)
 
-      visit url
-      within '.row.list' do
-        all('figure').last.click
+        visit url
+        within('.row.list') { all('figure').last.click }
+        data << SeshopCrawler.calc_price_and_get_url(self)
+      else
+        data << SeshopCrawler.calc_price_and_get_url(self) << nil
       end
-      data << SeshopCrawler.calc_price_and_get_url(self)
     end
     data.flatten!
     @paper_price, @paper_url, @pdf_price, @pdf_url = data
