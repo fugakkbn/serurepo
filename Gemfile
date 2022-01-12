@@ -44,7 +44,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'premailer-rails'
 gem 'selenium-webdriver'
 gem 'slim-rails'
-gem 'webdrivers'
 gem 'whenever', require: false
 
 group :development, :test do
