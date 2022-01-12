@@ -8,31 +8,20 @@ on:
 
 jobs:
   lint:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0.2
-        bundler-cache: true
-
-    - name: Cache node modules
-      uses: actions/cache@v2.1.4
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: yarn install
-      run:  yarn install --check-files
+    - name: Setup docker
+      shell: bash
+      run: |
+        docker-compose build
 
     - name: Rubocop
-      run: bundle exec rubocop
+      run: docker-compose run web bundle exec rubocop
 
     - name: Slim Lint
-      run: bundle exec slim-lint app/views
+      run: docker-compose run web bundle exec slim-lint app/views
 
     - name: JS Lint
-      run: bin/yarn lint
+      run: docker-compose run web bin/yarn lint
