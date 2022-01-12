@@ -6,7 +6,7 @@ require_relative '../../lib/crawler/amazon_crawler'
 RSpec.describe 'AmazonCrawler', type: :system do
   describe 'run' do
     let(:crawler) { AmazonCrawler.new }
-    let(:book) { build(:perfect_rails) }
+    let(:book) { build(:genba_rails) }
     let(:dokugaku) { build(:dokugaku) }
 
     it '金額は数値、ASINは10桁の文字列が返ってくること' do
