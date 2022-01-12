@@ -24,14 +24,3 @@ COPY . /serurepo
 RUN gem install bundler
 RUN bundle install
 RUN yarn install
-
-#COPY Gemfile /serurepo/Gemfile
-#COPY Gemfile.lock /serurepo/Gemfile.lock
-#RUN gem install bundler
-#RUN bundle install
-#
-#COPY package.json /serurepo/package.json
-#COPY yarn.lock /serurepo/yarn.lock
-#RUN yarn install
-#
-#COPY . /serurepo
