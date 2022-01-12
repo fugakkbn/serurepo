@@ -8,6 +8,8 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'capybara/rails'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -47,6 +49,23 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseRewinder.clean
+  end
+
+  config.before do |example|
+    if example.metadata[:type] == :system
+      Capybara.register_driver :remote_selenium do |app|
+        caps = Selenium::WebDriver::Remote::Capabilities.chrome(
+          'goog:chromeOptions' => { args: %w[headless no-sandbox disable-dev-shm-usage] }
+        )
+
+        Capybara::Selenium::Driver.new(
+          app,
+          browser: :chrome,
+          capabilities: caps
+        )
+      end
+      driven_by :remote_selenium
+    end
   end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
