@@ -22,9 +22,6 @@ SimpleCov.start 'rails' do
   add_filter 'app/jobs'
 end
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
-
 require 'capybara/rspec'
 
 RSpec.configure do |config|
