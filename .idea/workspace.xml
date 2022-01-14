@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd931089-e098-4bdf-af70-adb492bceeb8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/serurepo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/serurepo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/crawler/amazon_crawler.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/crawler/amazon_crawler.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641801074728</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Codecovの使用を停止">
+      <created>1642168271856</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642168271856</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +151,8 @@
     <MESSAGE value="Docker環境でRSpecを使用できるように修正" />
     <MESSAGE value="Docker環境でクローラーが動くように修正" />
     <MESSAGE value="SEshop用のクローラーの挙動を調整" />
-    <option name="LAST_COMMIT_MESSAGE" value="SEshop用のクローラーの挙動を調整" />
+    <MESSAGE value="Codecovの使用を停止" />
+    <option name="LAST_COMMIT_MESSAGE" value="Codecovの使用を停止" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/serurepo@sale_report_start__serurepo.rcov" NAME="sale_report:start: serurepo Coverage Results" MODIFIED="1638454048292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="serurepo" />
