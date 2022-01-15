@@ -158,7 +158,6 @@
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.0.3, rbenv: 3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="semantic_range (v3.0.0, rbenv: 3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.21.2, rbenv: 3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov-cobertura (v2.1.0, rbenv: 3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.3, rbenv: 3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.3, rbenv: 3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="slim (v4.1.0, rbenv: 3.0.2) [gem]" level="application" />

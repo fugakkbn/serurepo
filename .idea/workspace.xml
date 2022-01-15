@@ -7,6 +7,8 @@
     <list default="true" id="dd931089-e098-4bdf-af70-adb492bceeb8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/serurepo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/serurepo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +116,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642168271856</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=".idea/更新">
+      <created>1642168401961</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642168401961</updated>
+    </task>
+    <task id="LOCAL-00009" summary="インストール方法の修正">
+      <created>1642249315978</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642249315980</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +168,9 @@
     <MESSAGE value="Docker環境でクローラーが動くように修正" />
     <MESSAGE value="SEshop用のクローラーの挙動を調整" />
     <MESSAGE value="Codecovの使用を停止" />
-    <option name="LAST_COMMIT_MESSAGE" value="Codecovの使用を停止" />
+    <MESSAGE value=".idea/更新" />
+    <MESSAGE value="インストール方法の修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="インストール方法の修正" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/serurepo@sale_report_start__serurepo.rcov" NAME="sale_report:start: serurepo Coverage Results" MODIFIED="1638454048292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="serurepo" />
