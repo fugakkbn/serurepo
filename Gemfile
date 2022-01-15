@@ -44,7 +44,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'premailer-rails'
 gem 'selenium-webdriver'
 gem 'slim-rails'
-gem 'webdrivers'
 gem 'whenever', require: false
 
 group :development, :test do
@@ -82,7 +81,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'codecov', require: false
   gem 'database_rewinder'
   gem 'simplecov', require: false
 end

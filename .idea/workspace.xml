@@ -7,13 +7,8 @@
     <list default="true" id="dd931089-e098-4bdf-af70-adb492bceeb8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/serurepo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/serurepo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/channels/consumer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/channels/consumer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/channels/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/channels/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpacker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpacker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +59,13 @@
       <option name="presentableId" value="Default" />
       <updated>1627990540653</updated>
       <workItem from="1627990542129" duration="3789000" />
+      <workItem from="1640186098743" duration="1092000" />
+      <workItem from="1640507430672" duration="1273000" />
+      <workItem from="1640613272990" duration="2838000" />
+      <workItem from="1640858038868" duration="536000" />
+      <workItem from="1640873793202" duration="294000" />
+      <workItem from="1641080539024" duration="457000" />
+      <workItem from="1641561527829" duration="30801000" />
     </task>
     <task id="LOCAL-00001" summary="👮‍">
       <created>1628257289991</created>
@@ -72,7 +74,63 @@
       <option name="project" value="LOCAL" />
       <updated>1628257289991</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Amazonのタグを修正">
+      <created>1639747452532</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639747452532</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Docker環境を構築">
+      <created>1641800936783</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641800936783</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Docker環境でRSpecを使用できるように修正">
+      <created>1641801035995</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641801035995</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Docker環境でクローラーが動くように修正">
+      <created>1641801053237</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641801053237</updated>
+    </task>
+    <task id="LOCAL-00006" summary="SEshop用のクローラーの挙動を調整">
+      <created>1641801074728</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641801074728</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Codecovの使用を停止">
+      <created>1642168271856</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642168271856</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".idea/更新">
+      <created>1642168401961</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642168401961</updated>
+    </task>
+    <task id="LOCAL-00009" summary="インストール方法の修正">
+      <created>1642249315978</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642249315980</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +162,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="‍" />
-    <option name="LAST_COMMIT_MESSAGE" value="‍" />
+    <MESSAGE value="Amazonのタグを修正" />
+    <MESSAGE value="Docker環境を構築" />
+    <MESSAGE value="Docker環境でRSpecを使用できるように修正" />
+    <MESSAGE value="Docker環境でクローラーが動くように修正" />
+    <MESSAGE value="SEshop用のクローラーの挙動を調整" />
+    <MESSAGE value="Codecovの使用を停止" />
+    <MESSAGE value=".idea/更新" />
+    <MESSAGE value="インストール方法の修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="インストール方法の修正" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/serurepo@sale_report_start__serurepo.rcov" NAME="sale_report:start: serurepo Coverage Results" MODIFIED="1638454048292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="serurepo" />
   </component>
 </project>

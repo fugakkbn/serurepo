@@ -2,4 +2,5 @@
 
 bundle exec rubocop -a
 bundle exec slim-lint app/views
-bin/yarn lint
+bin/yarn eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0
+bin/yarn prettier app/javascript/**/*.{js,vue} --check
