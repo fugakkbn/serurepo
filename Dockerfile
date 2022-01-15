@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends  \
     nodejs yarn  \
     postgresql-client  \
     build-essential  \
+    ipa-pgothic-fonts.noarch  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  \
@@ -16,7 +17,6 @@ RUN wget https://chromedriver.storage.googleapis.com/97.0.4692.71/chromedriver_l
     && unzip chromedriver_linux64.zip  \
     && mv chromedriver /usr/local/bin/  \
     && chmod 755 /usr/local/bin/chromedriver
-RUN yum install ipa-pgothic-fonts.noarch
 
 WORKDIR /serurepo
 
