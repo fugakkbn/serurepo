@@ -16,6 +16,7 @@ RUN wget https://chromedriver.storage.googleapis.com/97.0.4692.71/chromedriver_l
     && unzip chromedriver_linux64.zip  \
     && mv chromedriver /usr/local/bin/  \
     && chmod 755 /usr/local/bin/chromedriver
+RUN yum install ipa-pgothic-fonts.noarch
 
 WORKDIR /serurepo
 
