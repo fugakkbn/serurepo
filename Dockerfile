@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends  \
     nodejs yarn  \
     postgresql-client  \
     build-essential  \
-    fonts-ipafont-gothic  \
+    fonts-ipafont-gothic vim  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  \
