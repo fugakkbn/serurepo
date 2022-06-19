@@ -11,26 +11,40 @@ class SeshopCrawler < Crawler
     @pdf_price = ''
     @paper_price = ''
     @paper_url = ''
+    @logger = Logger.new('log/crawler.log')
   end
 
-  def run(isbn)
+  def run(isbn) # rubocop:disable Metrics/MethodLength
     url = @search_url + isbn
     data = []
-    start_scraping url do
-      return data << nil if find('.row.list').text == '該当の商品はありません。'
+    begin
+      @logger << "-- SEShop Crawler started at: #{Time.current}\n"
+      start_scraping url do
+        return data << nil if find('.row.list').text == '該当の商品はありません。'
 
-      if find('h1').text.include?('検索結果一覧')
-        within('.row.list') { first('figure').click }
-        data << SeshopCrawler.calc_price_and_get_url(self)
+        if find('h1').text.include?('検索結果一覧')
+          within('.row.list') { first('figure').click }
+          data << SeshopCrawler.calc_price_and_get_url(self)
 
-        visit url
-        within('.row.list') { all('figure').last.click }
-        data << SeshopCrawler.calc_price_and_get_url(self)
-      else
-        data << SeshopCrawler.calc_price_and_get_url(self) << nil
+          visit url
+          within('.row.list') { all('figure').last.click }
+          data << SeshopCrawler.calc_price_and_get_url(self)
+        else
+          data << SeshopCrawler.calc_price_and_get_url(self) << nil
+        end
       end
+    rescue StandardError => e
+      @logger << "#{'*' * 30}\n"
+      @logger << "*****Error caused SEShop Crawler*****\n"
+      @logger << "【Error Message isbn: #{isbn}】#{e.message}\n"
+      @logger << "#{'*' * 30}\n"
     end
+
     data.flatten!
+
+    @logger << "【SEShop isbn: #{isbn}】#{data}\n"
+    @logger << "-- SEShop Crawler ended.\n"
+
     @paper_price, @paper_url, @pdf_price, @pdf_url = data
   end
 

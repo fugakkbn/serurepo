@@ -8,9 +8,9 @@ require 'logger'
 
 module Comparer
   class Books
-    def self.run # rubocop:disable Metrics/MethodLength
+    def self.run
       logger = Logger.new('log/crawler.log')
-      logger << "==#{Time.current} start==================\n"
+      logger << "==#{Time.current} Books Compare start==================\n"
 
       data = []
       Book.find_each do |book|
@@ -18,14 +18,11 @@ module Comparer
         dmm = DmmCrawler.new
         rakuten = RakutenCrawler.new
         seshop = SeshopCrawler.new
-        begin
-          amazon.run(book.isbn13)
-          dmm.run(book.title)
-          rakuten.run(book.isbn13)
-          seshop.run(book.isbn13)
-        rescue Capybara::ElementNotFound
-          logger << "Capybara::ElementNotFound\n"
-        end
+
+        amazon.run(book.isbn13)
+        dmm.run(book.title)
+        rakuten.run(book.isbn13)
+        seshop.run(book.isbn13)
 
         data.push({ book_id: book.id,
                     amazon: amazon_comparer(amazon, book),
@@ -33,7 +30,9 @@ module Comparer
                     rakuten: rakuten_comparer(rakuten, book),
                     seshop: seshop_comparer(seshop, book) })
       end
-      logger << data
+
+      logger << "【All Results】\n#{data}\n"
+
       data
     end
 
