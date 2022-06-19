@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends  \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  \
     && dpkg -i google-chrome-stable_current_amd64.deb
-RUN wget https://chromedriver.storage.googleapis.com/100.0.4896.60/chromedriver_linux64.zip \
+RUN wget https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_linux64.zip \
     && unzip chromedriver_linux64.zip  \
     && mv chromedriver /usr/local/bin/  \
     && chmod 755 /usr/local/bin/chromedriver
@@ -25,4 +25,3 @@ COPY . /serurepo
 RUN gem install bundler
 RUN bundle install
 RUN yarn install
-
