@@ -2,7 +2,7 @@
 lock '~> 3.16.0'
 
 set :application, 'serurepo'
-set :repo_url, 'git@github.com:FUGA0618/serurepo.git'
+set :repo_url, 'git@github.com:fugakkbn/serurepo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -18,7 +18,7 @@ module MetaTagsHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@fuga__ch',
+        site: '@fugakkbn',
         description: '「いつか読みたい本」を安いときに。書籍のセール通知サービス。',
         image: 'https://serurepo.com/ogp/ogp.png',
         domain: 'https://serurepo.com'
