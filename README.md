@@ -1,4 +1,3 @@
-[![Deploy with Capistrano](https://github.com/fugakkbn/serurepo/actions/workflows/deploy_with_capistrano.yml/badge.svg)](https://github.com/fugakkbn/serurepo/actions/workflows/deploy_with_capistrano.yml)
 [![Lint](https://github.com/fugakkbn/serurepo/actions/workflows/lint.yml/badge.svg)](https://github.com/fugakkbn/serurepo/actions/workflows/lint.yml)
 [![test](https://github.com/fugakkbn/serurepo/actions/workflows/test.yml/badge.svg)](https://github.com/fugakkbn/serurepo/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/FUGA0618/serurepo/branch/main/graph/badge.svg?token=XPH2NIQQGP)](https://codecov.io/gh/FUGA0618/serurepo)
