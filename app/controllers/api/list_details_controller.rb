@@ -23,6 +23,8 @@ class API::ListDetailsController < API::BaseController
     list_detail = ListDetail.find(params[:id])
 
     if list_detail.destroy
+      list_detail.book.not_in_list_details_destroy!
+
       render status: :ok,
              json: { successMessage: '削除しました。' }
     else
