@@ -9,4 +9,8 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :image, presence: true
   validates :url, presence: true
+
+  def not_in_list_details_destroy!
+    destroy! if list_details.empty?
+  end
 end

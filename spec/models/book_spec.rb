@@ -101,4 +101,26 @@ RSpec.describe Book, type: :model do
       end
     end
   end
+
+  describe '#not_in_list_details_destroy!' do
+    subject { book.not_in_list_details_destroy! }
+
+    let!(:book) { create(:cherry) }
+
+    context '他のリストに登録されていない場合' do
+      it 'DBから削除されること' do
+        expect { subject }.to change(described_class, :count).by(-1)
+      end
+    end
+
+    context '他のリストに登録されている場合' do
+      before do
+        create(:list_detail_one, book: book)
+      end
+
+      it 'DBから削除されないこと' do
+        expect { subject }.not_to change(described_class, :count)
+      end
+    end
+  end
 end
