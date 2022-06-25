@@ -23,6 +23,10 @@ NestedGroups:
   Exclude:
     - spec/**/*
 
+RSpec/NamedSubject:
+  Exclude:
+    - spec/**/*
+
 RSpec/ExampleLength:
   Exclude:
     - spec/system/*
