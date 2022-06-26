@@ -35,7 +35,7 @@ RSpec.describe 'Api::ListDetails::Id', type: :request do
         it 'リスト詳細IDはnilであること' do
           sign_in user
           get api_list_details_id_index_path({ isbn: other_book.isbn13 })
-          expect(JSON.parse(response.body)['listDetailId']).to eq nil
+          expect(JSON.parse(response.body)['listDetailId']).to be_nil
         end
       end
     end

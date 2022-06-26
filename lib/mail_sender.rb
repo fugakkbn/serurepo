@@ -18,7 +18,7 @@ class MailSender
         end
         next if all_data_nil?(data)
 
-        SaleMailer.with(user: user, sale_data: data).sale_email.deliver_now
+        SaleMailer.with(user:, sale_data: data).sale_email.deliver_now
       end
     end
   end
@@ -29,8 +29,6 @@ class MailSender
 
   def self.get_rating(user)
     case user.discount_rating.to_a
-    when [:even]
-      1
     when [:over10]
       0.9
     when [:over20]

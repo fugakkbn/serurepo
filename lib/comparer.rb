@@ -51,7 +51,7 @@ module Comparer
 
       return if price >= book.price
 
-      { price: price,
+      { price:,
         url: "https://www.amazon.co.jp/dp/#{amazon_data.asin}/ref=nosim?tag=#{Rails.application.credentials.amazon[:tag]}" }
     end
 
@@ -76,7 +76,7 @@ module Comparer
 
       return if price >= book.price
 
-      { price: price, url: book.url }
+      { price:, url: book.url }
     end
 
     def self.seshop_comparer(seshop_data, book)
@@ -97,9 +97,7 @@ module Comparer
     end
 
     def self.compare_price(e_book_price, paper_price)
-      if e_book_price == paper_price
-        e_book_price
-      elsif e_book_price < paper_price
+      if e_book_price <= paper_price
         e_book_price
       elsif e_book_price > paper_price
         paper_price

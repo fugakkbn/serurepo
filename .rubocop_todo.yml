@@ -1,0 +1,13 @@
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/mail_sender.rb'
+    - 'lib/comparer.rb'
+    - 'lib/crawler/seshop_crawler.rb'
+    - 'lib/crawler/rakuten_crawler.rb'
+    - 'lib/crawler/dmm_crawler.rb'
+    - 'lib/crawler/amazon_crawler.rb'
+    - 'app/controllers/books_controller.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/mail_sender.rb'
