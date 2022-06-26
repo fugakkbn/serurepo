@@ -13,7 +13,7 @@ RSpec.describe SaleMailer, type: :mailer do
           { price: 2926,
             url: 'https://www.amazon.co.jp/dp/B0734GH91L/' } }
     end
-    let(:mail) { described_class.with(user: user, sale_data: sale_data).sale_email }
+    let(:mail) { described_class.with(user:, sale_data:).sale_email }
 
     it 'ユーザーのメールアドレスに送ること' do
       expect(mail.to).to eq [user.email]

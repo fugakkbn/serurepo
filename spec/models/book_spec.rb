@@ -115,7 +115,7 @@ RSpec.describe Book, type: :model do
 
     context '他のリストに登録されている場合' do
       before do
-        create(:list_detail_one, book: book)
+        create(:list_detail_one, book:)
       end
 
       it 'DBから削除されないこと' do

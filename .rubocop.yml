@@ -1,11 +1,29 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
   - rubocop-rspec
 
-inherit_gem:
-  rubocop-fjord:
-    - "config/rubocop.yml"
-    - "config/rails.yml"
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Exclude:
+    - config/**/*
+    - node_modules/**/*
+    - db/migrate/*
+    - db/schema.rb
+    - vendor/**/*
+    - bin/**/*
+    - app/views/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
@@ -15,6 +33,13 @@ Metrics/ClassLength:
   Exclude:
     - spec/**/*
 
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 20
+
 ContextWording:
   Exclude:
     - spec/**/*
@@ -23,13 +48,19 @@ NestedGroups:
   Exclude:
     - spec/**/*
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/RedundantPresenceValidationOnBelongsTo:
+  Enabled: false
+
 RSpec/NamedSubject:
   Exclude:
     - spec/**/*
 
 RSpec/ExampleLength:
   Exclude:
-    - spec/system/*
+    - spec/**/*
 
 RSpec/MultipleExpectations:
   Exclude:

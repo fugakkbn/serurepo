@@ -25,7 +25,7 @@ class DmmCrawler < Crawler
 
         price = find('.m-boxSubDetailPurchase__price')
                 .text
-                .split(' ')[1]
+                .split[1]
                 .delete(',円')
                 .to_i
 

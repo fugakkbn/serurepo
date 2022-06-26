@@ -11,16 +11,16 @@ RSpec.describe 'Api::Books', type: :request do
       context 'すでに登録済みの書籍の場合' do
         it '200が返ること' do
           sign_in user
-          post api_books_path, params: { book: book }
-          post api_books_path, params: { book: book }
+          post api_books_path, params: { book: }
+          post api_books_path, params: { book: }
           expect(response).to have_http_status(:ok)
         end
 
         it '登録がされないこと' do
           sign_in user
-          post api_books_path, params: { book: book }
-          post api_books_path, params: { book: book }
-          expect { post api_books_path, params: { book: book } }.not_to change(Book, :count)
+          post api_books_path, params: { book: }
+          post api_books_path, params: { book: }
+          expect { post api_books_path, params: { book: } }.not_to change(Book, :count)
         end
       end
 
@@ -28,13 +28,13 @@ RSpec.describe 'Api::Books', type: :request do
         context '正常な値の場合' do
           it '201が返ること' do
             sign_in user
-            post api_books_path, params: { book: book }
+            post api_books_path, params: { book: }
             expect(response).to have_http_status(:created)
           end
 
           it '登録が1件増えること' do
             sign_in user
-            expect { post api_books_path, params: { book: book } }.to change(Book, :count).by(1)
+            expect { post api_books_path, params: { book: } }.to change(Book, :count).by(1)
           end
         end
 
@@ -42,20 +42,20 @@ RSpec.describe 'Api::Books', type: :request do
           it '422が返ること' do
             sign_in user
             book['title'] = nil
-            post api_books_path, params: { book: book }
+            post api_books_path, params: { book: }
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it '登録がされないこと' do
             sign_in user
             book['title'] = nil
-            expect { post api_books_path, params: { book: book } }.not_to change(Book, :count)
+            expect { post api_books_path, params: { book: } }.not_to change(Book, :count)
           end
 
           it '「登録に失敗しました。」とエラーメッセージが出ること' do
             sign_in user
             book['title'] = nil
-            post api_books_path, params: { book: book }
+            post api_books_path, params: { book: }
             expect(JSON.parse(response.body)['errorMessage']).to eq '登録に失敗しました。'
           end
         end
@@ -64,12 +64,12 @@ RSpec.describe 'Api::Books', type: :request do
 
     context '未ログインの場合' do
       it '401が返ること' do
-        post api_books_path, params: { book: book }
+        post api_books_path, params: { book: }
         expect(response).to have_http_status(:unauthorized)
       end
 
       it '登録がされないこと' do
-        expect { post api_books_path, params: { book: book } }.not_to change(Book, :count)
+        expect { post api_books_path, params: { book: } }.not_to change(Book, :count)
       end
     end
   end

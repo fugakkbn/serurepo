@@ -33,10 +33,10 @@ class RakutenCrawler < Crawler
 
         next if price_list_dom.size.zero?
 
-        e_book_price = price_list_dom[0].text.split(' ')[-1].delete(',円').to_i
+        e_book_price = price_list_dom[0].text.split[-1].delete(',円').to_i
         data << e_book_price
 
-        paper_book_price = price_list_dom[1].text.split(' ')[-1].delete(',円').to_i
+        paper_book_price = price_list_dom[1].text.split[-1].delete(',円').to_i
         data << paper_book_price
       end
     rescue StandardError => e
