@@ -19,6 +19,7 @@ jobs:
         docker-compose build
         docker-compose run web yarn install --check-files
         docker-compose run web yarn upgrade
+        docker-compose run web yarn build
         docker-compose run web echo ${{ secrets.RAILS_MASTER_KEY }} >> config/master.key
         docker-compose run web bin/rails db:create
       
