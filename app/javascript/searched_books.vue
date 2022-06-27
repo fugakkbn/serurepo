@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import bookItem from './searched_book'
+import bookItem from './searched_book.vue'
 
 export default {
   components: {
