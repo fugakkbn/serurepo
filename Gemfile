@@ -65,7 +65,7 @@ group :development do
   gem 'bcrypt_pbkdf'
   gem 'ed25519'
   gem 'html2slim'
-  gem 'letter_opener_web', '~> 1.0'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'slim_lint'
   gem 'spring'
 end
