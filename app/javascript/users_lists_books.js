@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import Books from './users_lists_books'
+import Books from './users_lists_books.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '#js-users-lists-books'

@@ -331,8 +331,8 @@ RSpec.describe 'Users', type: :system do
         expect(page).to have_css 'input#user_discount_rating_over20'
         expect(page).to have_css 'input#user_discount_rating_over30'
         expect(page).to have_css 'input#user_discount_rating_over50'
-        expect(page).to have_link 'ログアウト', href: destroy_user_session_path
-        expect(page).to have_link 'アカウント削除', href: user_registration_path
+        expect(page).to have_button 'ログアウト'
+        expect(page).to have_button 'アカウント削除'
       end
 
       it 'パスワードなしで割引率を更新できること' do
@@ -366,14 +366,14 @@ RSpec.describe 'Users', type: :system do
       end
 
       it 'ログアウトできること' do
-        click_link 'ログアウト'
+        click_button 'ログアウト'
         expect(page).to have_content 'ログアウトしました。'
       end
 
       it 'アカウントを削除できること' do
-        page.accept_confirm do
-          click_link 'アカウント削除'
-        end
+        # FIXME: turbo-links をはがしたしたことで挙動が変わっている。
+        #        devise が Turbo に対応して Turbo を使えるようになったら修正する。
+        click_button 'アカウント削除'
         expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
       end
 
@@ -432,8 +432,8 @@ RSpec.describe 'Users', type: :system do
 
       it 'メールアドレス入力フォーム、割引率設定、ログアウト・削除リンクのみがあること' do
         expect(page).to have_css 'input#user_email'
-        expect(page).to have_link 'ログアウト', href: destroy_user_session_path
-        expect(page).to have_link 'アカウント削除', href: user_registration_path
+        expect(page).to have_button 'ログアウト'
+        expect(page).to have_button 'アカウント削除'
         expect(page).to have_css 'input#user_discount_rating_even'
         expect(page).to have_css 'input#user_discount_rating_over10'
         expect(page).to have_css 'input#user_discount_rating_over20'
@@ -467,14 +467,14 @@ RSpec.describe 'Users', type: :system do
       end
 
       it 'ログアウトできること' do
-        click_link 'ログアウト'
+        click_button 'ログアウト'
         expect(page).to have_content 'ログアウトしました。'
       end
 
       it 'アカウントを削除できること' do
-        page.accept_confirm do
-          click_link 'アカウント削除'
-        end
+        # FIXME: turbo-links をはがしたしたことで挙動が変わっている。
+        #        devise が Turbo に対応して Turbo を使えるようになったら修正する。
+        click_button 'アカウント削除'
         expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
       end
     end

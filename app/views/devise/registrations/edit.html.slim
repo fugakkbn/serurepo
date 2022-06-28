@@ -63,7 +63,8 @@ section.container.is-max-desktop.py-4
       = f.submit t('.update'), class: 'button max-mobile quarter-tablet is-info'
 
   p.has-text-right
-    = link_to t('.cancel_my_account'), registration_path(resource_name),
-            data: { confirm: t('.are_you_sure') },
+    / NOTE: Turbo を有効にできないので button_to でお茶を濁している
+    = button_to t('.cancel_my_account'), registration_path(resource_name),
+            form: { data: { confirm: t('.are_you_sure') } },
             method: :delete,
-            class: 'has-text-grey-light is-size-7'
+            class: 'has-text-grey-light is-size-7 break'

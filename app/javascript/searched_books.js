@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import searchedBooks from './searched_books'
+import searchedBooks from './searched_books.vue'
 
 document.addEventListener( 'DOMContentLoaded', () => {
   const selector = '#js-searched-books'

@@ -37,3 +37,5 @@ section.container.is-max-desktop.py-4
             = link_to @max_page_num, books_path(query: @query, page: @max_page_num), class: 'pagination-link'
 
   = render 'books/shared/search_form'
+
+= javascript_include_tag 'searched_books'
