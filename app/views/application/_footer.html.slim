@@ -4,9 +4,10 @@ footer.footer.px-4.py-5
       = link_to '利用規約', tos_path, class: 'mx-3'
     li.footer-item
       = link_to 'プライバシーポリシー', privacy_policy_path, class: 'mx-3'
-    li.footer-item
-      / NOTE: Turbo を有効にできないので button_to でお茶を濁している
-      = button_to 'ログアウト', :destroy_user_session, method: :delete, class: 'mx-3 break'
+    - if user_signed_in?
+      li.footer-item
+        / NOTE: Turbo を有効にできないので button_to でお茶を濁している
+        = button_to 'ログアウト', :destroy_user_session, method: :delete, class: 'mx-3 break'
 
   ul.block.is-flex.is-justify-content-center
     li.footer-item

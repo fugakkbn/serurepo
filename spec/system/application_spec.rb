@@ -56,4 +56,23 @@ RSpec.describe 'application', type: :system do
       end
     end
   end
+
+  describe 'footer menu' do
+    context 'ログイン済みの場合' do
+      let(:user) { create(:alice) }
+
+      it 'ログアウトリンクが表示されること' do
+        login(user)
+        visit root_path
+        expect(page).to have_button 'ログアウト'
+      end
+    end
+
+    context '未ログインの場合' do
+      it 'ログアウトリンクが表示されないこと' do
+        visit root_path
+        expect(page).not_to have_button 'ログアウト'
+      end
+    end
+  end
 end
