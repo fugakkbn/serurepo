@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import bookItem from './searched_book.vue'
 
 export default {
