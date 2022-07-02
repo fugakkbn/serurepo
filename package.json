@@ -2,9 +2,9 @@
   "name": "serurepo",
   "private": true,
   "scripts": {
-    "lint": "run-p lint:*",
-    "lint:eslint": "eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0",
-    "lint:prettier": "prettier app/javascript/**/*.{js,vue} --check",
+    "eslint": "eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0",
+    "prettier": "prettier app/javascript/**/*.{js,vue} --check",
+    "prettier-w": "prettier app/javascript/**/*.{js,vue} --write",
     "build": "webpack --config config/webpack/webpack.config.js",
     "start": "webpack serve --config config/webpack/webpack.config.js"
   },
@@ -39,7 +39,6 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.17.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
     "prettier-config-standard": "^4.0.0",
     "webpack-dev-server": "^3.11.2"
