@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,                                 /* JS をインポートできるようにするか */
+    "strict": true,
+    "jsx": "preserve",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": ".",                                  /* モジュール名を指定するときの起点となるパス */
+    "paths": {                                       /* import 使用時の baseUrl からの相対パス。@ に続けて相対パスを使えるようになる */
+      "@/*": ["app/javascript/*"]
+    },
+    "sourceMap": true                                /* デバッガなどのツールが生成された JS ファイルを操作する際に、元の TS コードを表示する */
+  },
+  "include": ["app/javascript/**/*"],
+  "exclude": ["node_modules", "vendor", "public"]
+}

@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import bookItem from './users_lists_book.vue'
 
 export default {

@@ -1,0 +1,6 @@
+app/javascript/channels/*
+
+app/javascript/users_lists_books.vue
+app/javascript/users_lists_book.vue
+app/javascript/searched_books.vue
+app/javascript/searched_book.vue
