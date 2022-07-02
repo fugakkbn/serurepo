@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     book: { type: Object, required: true },

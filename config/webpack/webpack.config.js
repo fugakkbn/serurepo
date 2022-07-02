@@ -1,10 +1,10 @@
-const path    = require("path")
+const path = require("path")
 const glob = require('glob')
 const { VueLoaderPlugin } = require("vue-loader")
-const webpack = require("webpack")
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const entries = {};
-glob.sync('./app/javascript/*.js').forEach((file) => {
+glob.sync('./app/javascript/*.{js,ts}').forEach((file) => {
   const name = file.replace('./app/javascript/', '').split('.')[0];
   entries[name] = file;
 });
@@ -20,16 +20,14 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1
-    })
+    new ForkTsCheckerWebpackPlugin(),
   ],
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|ts)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["babel-loader", "ts-loader"],
       },
       {
         test: /\.vue$/,
