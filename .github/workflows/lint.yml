@@ -26,7 +26,7 @@ jobs:
       run: docker-compose run web bundle exec slim-lint app/views
       
     - name: ESLint
-      run: docker-compose run web bin/yarn eslint 'app/javascript/**/*.{js,vue}' --max-warnings=0
+      run: docker-compose run web bin/yarn eslint 'app/javascript/**/*.{js,ts,vue}' --max-warnings=0
       
     - name: Prettier
-      run: docker-compose run web bin/yarn prettier app/javascript/**/*.{js,vue} --check
+      run: docker-compose run web bin/yarn prettier app/javascript/**/*.{js,ts,vue} --check
