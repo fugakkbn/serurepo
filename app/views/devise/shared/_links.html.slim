@@ -1,6 +1,6 @@
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
-    = link_to omniauth_authorize_path(resource_name, provider), method: :post, class: 'button max mt-4'
+    = button_to omniauth_authorize_path(resource_name, provider), method: :post, class: 'button max mt-4'
       img.icon src='/g-logo.png'
       - if controller_name == 'registrations'
         span Googleアカウントで登録
