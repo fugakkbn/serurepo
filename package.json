@@ -6,7 +6,8 @@
     "prettier": "prettier app/javascript/**/*.{js,vue} --check",
     "prettier-w": "prettier app/javascript/**/*.{js,vue} --write",
     "build": "webpack --config config/webpack/webpack.config.js",
-    "start": "webpack serve --config config/webpack/webpack.config.js"
+    "start": "webpack serve --config config/webpack/webpack.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.bulma.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
     "@babel/core": "^7.18.5",
@@ -14,8 +15,9 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "babel-loader": "^8.2.5",
-    "bulma": "^0.9.3",
+    "bulma": "^0.9.4",
     "glob": "^8.0.3",
+    "sass": "^1.53.0",
     "vue": "^3.2.11",
     "vue-loader": "^16.5.0",
     "webpack": "^5.73.0",
